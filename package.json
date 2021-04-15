@@ -1,0 +1,52 @@
+{
+  "name": "prestashop-tailwind",
+  "version": "1.0.0",
+  "description": "Theme based on classic Theme",
+  "scripts": {
+    "build": "webpack --env mode=production --progress --color",
+    "build:zip": "node build.zip.js",
+    "dev": "webpack  --env mode=development --color -w"
+  },
+  "author": "PrestaShop / Gauthey Valentin",
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3",
+    "alpinejs": "^2.8.0",
+    "jquery": "^3.5.1",
+    "tailwindcss": "^2.1.1"
+  },
+  "devDependencies": {
+    "@fontsource/roboto": "^4.1.0",
+    "archiver": "^5.3.0",
+    "autoprefixer": "^10.2.1",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.26.14",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "copy-webpack-plugin": "^8.1.1",
+    "css-loader": "^5.0.1",
+    "css-minimizer-webpack-plugin": "^2.0.0",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prestashop": "0.0.2",
+    "eslint-import-resolver-webpack": "^0.12.1",
+    "eslint-plugin-html": "^6.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^1.4.1",
+    "node-sass": "^5.0.0",
+    "postcss": "^8.2.4",
+    "postcss-jsx": "^0.36.4",
+    "postcss-loader": "^4.1.0",
+    "sass-loader": "^10.1.1",
+    "shelljs": "^0.8.4",
+    "style-loader": "^2.0.0",
+    "stylelint": "^13.8.0",
+    "stylelint-config-prestashop": "^1.0.4",
+    "velocity-animate": "^1.5.2",
+    "webpack": "^5.32.0",
+    "webpack-cli": "^4.6.0"
+  }
+}

@@ -1,0 +1,26 @@
+
+$lg: 1024px;
+
+[x-cloak] { 
+  @apply hidden;
+}
+
+@media (min-width: $lg) {
+  .lg\:initial {
+    position: initial;
+  }
+}
+
+.fa-lg {
+  font-size: 1.33333em;
+  line-height: 1.1em;
+  vertical-align: 0;
+}
+
+.classic-input {
+  @apply rounded border-gray-400 border bg-gray-200 px-1 py-1 h-8 ring-gray-800 focus:ring-1 focus:outline-none;
+}
+
+.primary-red {
+  @apply rounded bg-red-550 p-1 px-3 text-white;
+}
