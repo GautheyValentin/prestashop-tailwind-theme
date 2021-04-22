@@ -10,10 +10,8 @@ let hasError = false;
 let isUpdateOperation = false;
 let errorMsg = '';
 
-/**
- * Attach Bootstrap TouchSpin event handlers
- */
 function createSpin() {
+  console.log($(spinnerSelector));
   $.each($(spinnerSelector), (index, spinner) => {
     $(spinner).TouchSpin({
       verticalbuttons: true,
@@ -34,7 +32,11 @@ $(() => {
   const promises = [];
 
   prestashop.on('updateCart', () => {
-    $('.quickview').modal('hide');
+    try {
+      $('.quickview').modal('hide');
+    } catch (e) {
+      console.log('No QuickView');
+    }
   });
 
   prestashop.on('updatedCart', () => {
@@ -83,6 +85,7 @@ $(() => {
   }
 
   function parseCartAction($target, namespace) {
+    console.log('Actions');
     if (!isTouchSpin(namespace)) {
       return {
         url: $target.attr('href'),
@@ -151,7 +154,6 @@ $(() => {
         const $quantityInput = getTouchSpinInput($target);
         $quantityInput.val(resp.quantity);
 
-        // Refresh cart preview
         prestashop.emit('updateCart', {
           reason: dataset,
           resp,

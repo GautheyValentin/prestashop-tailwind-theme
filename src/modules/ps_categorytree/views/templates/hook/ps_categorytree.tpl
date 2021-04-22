@@ -10,8 +10,8 @@
               <a class="w-10/12" href="{$node.link}">{$node.name}</a>
               {if $node.children}
                 <div class="cursor-pointer w-2/12 justify-end flex">
-                  <i class="material-icons" :class="{literal}{'hidden': isOpen}{/literal}" x-on:click="isOpen = true">&#xE145;</i>
-                  <i class="material-icons" :class="{literal}{'hidden': !isOpen}{/literal}" x-on:click="isOpen = false">&#xE15B;</i>
+                  <i class="fas fa-angle-down" :class="{literal}{'hidden': isOpen}{/literal}" x-on:click="isOpen = true" x-cloak></i>
+                  <i class="fas fa-angle-up" :class="{literal}{'hidden': !isOpen}{/literal}" x-on:click="isOpen = false"></i>
                 </div>
                 <div class="w-full" :class="{literal}{'hidden': !isOpen}{/literal}">
                   {categories nodes=$node.children depth=$depth+1}
@@ -21,8 +21,8 @@
               <a class="font-light text-sm" href="{$node.link}">{$node.name}</a>
               {if $node.children}
                 <div class="float-right">
-                  <i class="material-icons" :class="{literal}{'hidden': isOpen}{/literal}">&#xE145;</i>
-                  <i class="material-icons" :class="{literal}{'hidden': !isOpen}{/literal}">&#xE15B;</i>
+                  <i class="fas fa-angle-down" :class="{literal}{'hidden': isOpen}{/literal}" x-cloak></i>
+                  <i class="fas fa-angle-up" :class="{literal}{'hidden': !isOpen}{/literal}"></i>
                 </div>
                 <div class="collapse">
                   {categories nodes=$node.children depth=$depth+1}

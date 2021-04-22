@@ -53,6 +53,8 @@ module.exports = (args) => {
     },
     externals: {
       prestashop: 'prestashop',
+      $: '$',
+      jquery: 'jQuery',
     },
     optimization: {
       minimize: !!isProduction,

@@ -1,13 +1,9 @@
 
 {extends file='checkout/cart.tpl'}
 
-{block name='content' append}
-  {hook h='displayCrossSellingShoppingCart'}
-{/block}
-
 {block name='continue_shopping' append}
-  <a class="label" href="{$urls.pages.index}">
-    <i class="material-icons">chevron_left</i>{l s='Continue shopping' d='Shop.Theme.Actions'}
+  <a href="{$urls.pages.index}" class="mt-5 block">
+    <i class="fas fa-angle-left mr-2"></i> {l s='Continue shopping' d='Shop.Theme.Actions'}
   </a>
 {/block}
 

@@ -4,39 +4,29 @@
 {block name='content'}
 
   <section id="main">
-    <div class="cart-grid row">
+    <h1 class="font-medium text-2xl">{l s='Shopping Cart' d='Shop.Theme.Checkout'}</h1>
 
-      <!-- Left Block: cart product informations & shpping -->
-      <div class="cart-grid-body col-xs-12 col-lg-8">
-
-        <!-- cart products detailed -->
-        <div class="card cart-container">
-          <div class="card-block">
-            <h1 class="h1">{l s='Shopping Cart' d='Shop.Theme.Checkout'}</h1>
-          </div>
-          <hr class="separator">
-          {block name='cart_overview'}
-            {include file='checkout/_partials/cart-detailed.tpl' cart=$cart}
-          {/block}
-        </div>
+    <div class="flex flex-wrap mt-5">
+      <div class="w-full md:w-9/12">
+        {block name='cart_overview'}
+          {include file='checkout/_partials/cart-detailed.tpl' cart=$cart}
+        {/block}
 
         {block name='continue_shopping'}
-          <a class="label" href="{$urls.pages.index}">
-            <i class="material-icons">chevron_left</i>{l s='Continue shopping' d='Shop.Theme.Actions'}
+          <a href="{$urls.pages.index}" class="mt-5 block">
+            <i class="fas fa-angle-left mr-2"></i> {l s='Continue shopping' d='Shop.Theme.Actions'}
           </a>
         {/block}
 
-        <!-- shipping informations -->
         {block name='hook_shopping_cart_footer'}
           {hook h='displayShoppingCartFooter'}
         {/block}
       </div>
 
-      <!-- Right Block: cart subtotal & cart total -->
-      <div class="cart-grid-right col-xs-12 col-lg-4">
+      <div class="w-full md:w-3/12 px-5">
 
         {block name='cart_summary'}
-          <div class="card cart-summary">
+          <div class="bg-gray-100 p-2 md:p-5 rounded">
 
             {block name='hook_shopping_cart'}
               {hook h='displayShoppingCart'}
@@ -59,6 +49,7 @@
 
       </div>
 
+      {hook h='displayCrossSellingShoppingCart'}
     </div>
   </section>
 {/block}

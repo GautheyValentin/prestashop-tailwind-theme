@@ -1,4 +1,4 @@
-<nav class="breadcrumb px-5 {if $breadcrumb.count <=1}hidden{/if}">
+<nav class="mt-5 lg:mt-0 breadcrumb px-5 {if $breadcrumb.count <=1}hidden{/if}">
   <ol itemscope itemtype="https://schema.org/BreadcrumbList">
     {block name='breadcrumb'}
       {foreach from=$breadcrumb.links item=path name=breadcrumb}

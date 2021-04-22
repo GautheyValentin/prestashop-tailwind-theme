@@ -1,4 +1,4 @@
-<div class="flex justify-center">
+<div class="flex justify-center mt-10">
   <div class="container">
     {block name='hook_footer_before'}
       {hook h='displayFooterBefore'}

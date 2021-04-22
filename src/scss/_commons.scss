@@ -24,3 +24,9 @@ $lg: 1024px;
 .primary-red {
   @apply rounded bg-red-550 p-1 px-3 text-white;
 }
+
+.content-style {
+  p {
+    @apply block;
+  }
+}

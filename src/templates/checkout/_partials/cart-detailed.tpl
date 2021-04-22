@@ -1,10 +1,10 @@
 
 {block name='cart_detailed_product'}
-  <div class="cart-overview js-cart" data-refresh-url="{url entity='cart' params=['ajax' => true, 'action' => 'refresh']}">
+  <div class="bg-gray-100 p-2 rounded" data-refresh-url="{url entity='cart' params=['ajax' => true, 'action' => 'refresh']}">
     {if $cart.products}
-    <ul class="cart-items">
+    <ul class="divide-y-2">
       {foreach from=$cart.products item=product}
-        <li class="cart-item">
+        <li class="">
           {block name='cart_detailed_product_line'}
             {include file='checkout/_partials/cart-detailed-product-line.tpl' product=$product}
           {/block}

@@ -25,12 +25,14 @@
   {/block}
 
   {block name='product_images'}
-    <div class="">
-      <ul class="">
+    <div class="flex items-center space-x-1 mt-5">
+      <i class="fas fa-angle-left"></i>
+
+      <ul class="w-11/12">
         {foreach from=$product.images item=image}
           <li class="">
             <img
-              class=" {if $image.id_image == $product.default_image.id_image}  {/if}"
+              class="rounded-lg border-2 {if $image.id_image == $product.default_image.id_image}border-gray-300{/if}"
               data-image-medium-src="{$image.bySize.medium_default.url}"
               data-image-large-src="{$image.bySize.large_default.url}"
               src="{$image.bySize.home_default.url}"
@@ -47,7 +49,10 @@
           </li>
         {/foreach}
       </ul>
+  
+      <i class="fas fa-angle-right"></i>
+
     </div>
   {/block}
-{hook h='displayAfterProductThumbs' product=$product}
+  {hook h='displayAfterProductThumbs' product=$product}
 </div>

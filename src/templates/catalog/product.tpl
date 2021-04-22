@@ -27,8 +27,8 @@
   <section id="main" itemscope itemtype="https://schema.org/Product">
     <meta itemprop="url" content="{$product.url}">
 
-    <div class="flex w-full justify-center">
-      <div class="flex flex-col w-full md:w-5/12 p-5">
+    <div class="flex w-full justify-center flex-wrap">
+      <div class="flex flex-col w-full sm:w-5/12 p-5 sm:items-end">
         {block name='page_content_container'}
           <section class="" id="content">
             {block name='page_content'}
@@ -37,16 +37,11 @@
               {block name='product_cover_thumbnails'}
                 {include file='catalog/_partials/product-cover-thumbnails.tpl'}
               {/block}
-              <div class="">
-                <i class="material-icons left">&#xE314;</i>
-                <i class="material-icons right">&#xE315;</i>
-              </div>
-
             {/block}
           </section>
         {/block}
         </div>
-        <div class="flex flex-col w-full md:w-5/12 p-5">
+        <div class="flex flex-col w-full sm:w-5/12 p-5">
           {block name='page_header_container'}
             {block name='page_header'}
               <h1 class="text-3xl font-medium" itemprop="name">{block name='page_title'}{$product.name}{/block}</h1>
@@ -131,87 +126,102 @@
       </div>
     </div>
 
-    <div class="w-full">
+    <div class="w-full mt-5">
       {block name='product_tabs'}
-          <div class="">
-            <ul class="" role="tablist">
-              {if $product.description}
-                <li class="">
-                  <a
-                    class="{if $product.description} {/if}"
-                    data-toggle="tab"
-                    href="#description"
-                    role="tab"
-                    aria-controls="description"
-                    {if $product.description} aria-selected="true"{/if}>{l s='Description' d='Shop.Theme.Catalog'}</a>
-                </li>
-              {/if}
+        <div class="max-w-screen-lg mx-auto px-5" x-data="{ selectedKey: description }">
+          <ul class="flex space-x-4" role="tablist">
+
+            {if $product.description}
               <li class="">
-                <a
-                  class="{if !$product.description} {/if}"
-                  data-toggle="tab"
-                  href="#product-details"
+                <button
+                  @click="selectedKey = description"
+                  class="{if $product.description} {/if}"
                   role="tab"
-                  aria-controls="product-details"
-                  {if !$product.description} aria-selected="true"{/if}>{l s='Product Details' d='Shop.Theme.Catalog'}</a>
+                  aria-controls="description"
+                  {if $product.description} aria-selected="true"{/if}>
+                    {l s='Description' d='Shop.Theme.Catalog'}
+                </button>
               </li>
-              {if $product.attachments}
-                <li class="">
-                  <a
-                    class=""
-                    data-toggle="tab"
-                    href="#attachments"
-                    role="tab"
-                    aria-controls="attachments">{l s='Attachments' d='Shop.Theme.Catalog'}</a>
-                </li>
-              {/if}
-              {foreach from=$product.extraContent item=extra key=extraKey}
-                <li class="">
-                  <a
-                    class=""
-                    data-toggle="tab"
-                    href="#extra-{$extraKey}"
-                    role="tab"
-                    aria-controls="extra-{$extraKey}">{$extra.title}</a>
-                </li>
-              {/foreach}
-            </ul>
+            {/if}
 
-            <div class="" id="tab-content">
-              <div class=" {if $product.description} {/if}" id="description" role="tabpanel">
-                {block name='product_description'}
-                  <div class="">{$product.description nofilter}</div>
-                {/block}
-              </div>
+            {* <li class="">
+              <button
+                @click="selectedKey = 'product-details'"
+                class="{if !$product.description} hidden{/if}"
+                role="tab"
+                aria-controls="product-details"
+                {if !$product.description} aria-selected="true"{/if}>
+                  {l s='Product Details' d='Shop.Theme.Catalog'}
+              </button>
+            </li> *}
 
-              {block name='product_attachments'}
-                {if $product.attachments}
-                  <div class="" id="attachments" role="tabpanel">
-                    <section class="product-attachments">
-                      <p class="">{l s='Download' d='Shop.Theme.Actions'}</p>
-                      {foreach from=$product.attachments item=attachment}
-                        <div class="">
-                          <h4><a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">{$attachment.name}</a></h4>
-                          <p>{$attachment.description}</p>
-                          <a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">
-                            {l s='Download' d='Shop.Theme.Actions'} ({$attachment.file_size_formatted})
-                          </a>
-                        </div>
-                      {/foreach}
-                    </section>
-                  </div>
-                {/if}
+            {if $product.attachments}
+              <li class="">
+                <button
+                  @click="selectedKey = attachments"
+                  class=""
+                  role="tab"
+                  aria-controls="attachments">
+                    {l s='Attachments' d='Shop.Theme.Catalog'}
+                </button>
+              </li>
+            {/if}
+
+            {foreach from=$product.extraContent item=extra key=extraKey}
+              <li class="">
+                <button
+                  @click="selectedKey = extra-{$extraKey}"
+                  class=""
+                  role="tab"
+                  aria-controls="extra-{$extraKey}">
+                    {$extra.title}
+                </button>
+              </li>
+            {/foreach}
+
+          </ul>
+
+          <div class="mt-5" id="tab-content">
+            <div x-show="selectedKey === description" class="content-style" id="description" role="tabpanel">
+              {block name='product_description'}
+                <div class="">{$product.description nofilter}</div>
               {/block}
-
-              {foreach from=$product.extraContent item=extra key=extraKey}
-                <div class="{$extra.attr.class}" id="extra-{$extraKey}" role="tabpanel" {foreach $extra.attr as $key => $val} {$key}="{$val}"{/foreach}>
-                  {$extra.content nofilter}
-                </div>
-              {/foreach}
             </div>
+
+            {block name='product_attachments'}
+              {if $product.attachments}
+                <div x-show="selectedKey === attachments" class="content-style" id="attachments" role="tabpanel">
+                  <section class="product-attachments">
+                    <p class="">{l s='Download' d='Shop.Theme.Actions'}</p>
+                    {foreach from=$product.attachments item=attachment}
+                      <div class="">
+                        <h4><a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">{$attachment.name}</a></h4>
+                        <p>{$attachment.description}</p>
+                        <a href="{url entity='attachment' params=['id_attachment' => $attachment.id_attachment]}">
+                          {l s='Download' d='Shop.Theme.Actions'} ({$attachment.file_size_formatted})
+                        </a>
+                      </div>
+                    {/foreach}
+                  </section>
+                </div>
+              {/if}
+            {/block}
+
+            {foreach from=$product.extraContent item=extra key=extraKey}
+              <div 
+                x-show="selectedKey === extra-{$extraKey}" 
+                class="content-style {$extra.attr.class}" 
+                id="extra-{$extraKey}" 
+                role="tabpanel" 
+                {foreach $extra.attr as $key => $val} {$key}="{$val}"{/foreach}
+              >
+                {$extra.content nofilter}
+              </div>
+            {/foreach}
           </div>
-        {/block}
         </div>
+      {/block}
+    </div>
 
     {block name='product_accessories'}
       {if $accessories}

@@ -19,9 +19,9 @@
                 <a rel="{if $page.type === 'previous'}prev{elseif $page.type === 'next'}next{else}nofollow{/if}"
                   href="{$page.url}" class="flex items-center {['disabled' => !$page.clickable]|classnames}">
                   {if $page.type === 'previous'}
-                    <i class="material-icons">&#xE314;</i>{l s='Previous' d='Shop.Theme.Actions'}
+                    <i class="fas fa-angle-left mr-2"></i>{l s='Previous' d='Shop.Theme.Actions'}
                   {elseif $page.type === 'next'}
-                    {l s='Next' d='Shop.Theme.Actions'}<i class="material-icons">&#xE315;</i>
+                    {l s='Next' d='Shop.Theme.Actions'}<i class="fas fa-angle-right ml-2"></i>
                   {else}
                     {$page.page}
                   {/if}

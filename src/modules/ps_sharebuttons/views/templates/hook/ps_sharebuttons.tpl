@@ -1,27 +1,16 @@
-
-
-{* {block name='social_sharing'}
-  {if $social_share_links}
-    <div class="social-sharing">
-      <span>{l s='Share' d='Shop.Theme.Actions'}</span>
-      <ul>
-        {foreach from=$social_share_links item='social_share_link'}
-          <li class="{$social_share_link.class} icon-gray"><a href="{$social_share_link.url}" class="text-hide" title="{$social_share_link.label}" target="_blank">{$social_share_link.label}</a></li>
-        {/foreach}
-      </ul>
-    </div>
-  {/if}
-{/block} *}
-
 {block name='social_sharing'}
   {if $social_share_links}
     <div class="social-sharing">
       <span class="text-sm share-product-title">{l s='Share' d='Shop.Theme.Actions'}</span>
-      <ul>
+      <div class="space-x-3">
         {foreach from=$social_share_links item='social_share_link'}
-          <li class="material-icons"><a href="{$social_share_link.url}" class="text-hide" title="{$social_share_link.label}" target="_blank">{$social_share_link.class}</a></li>
+          <a href="{$social_share_link.url}" class="text-hide" title="{$social_share_link.label}" target="_blank">
+            {if $social_share_link.class === 'facebook'} <i class="fab fa-facebook-f"></i>
+            {elseif $social_share_link.class === 'twitter'} <i class="fab fa-twitter"></i>
+            {else} <i class="fab fa-pinterest-p"></i> {/if}
+          </a>
         {/foreach}
-      </ul>
+      </div>
     </div>
   {/if}
 {/block}

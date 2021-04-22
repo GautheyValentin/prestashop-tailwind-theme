@@ -1,5 +1,5 @@
-{if $page.page_name == 'index'}
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 p-5" itemscope
+{if $page.page_name == 'index' || $page.page_name == 'cart'}
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5" itemscope
     itemtype="https://schema.org/ItemList">
     {foreach from=$products item="product" key="position"}
       {include file="catalog/_partials/miniatures/product.tpl" product=$product position=$position}
