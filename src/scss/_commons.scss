@@ -21,12 +21,44 @@ $lg: 1024px;
   @apply rounded border-gray-400 border bg-gray-200 px-1 py-1 h-8 ring-gray-800 focus:ring-1 focus:outline-none;
 }
 
+.white-input {
+  @apply block p-2 sm:text-sm border-gray-300 rounded;
+}
+
+.password-input {
+  @apply block p-2 pr-24 sm:text-sm border-gray-300 rounded;
+}
+
+
+
 .primary-red {
   @apply rounded bg-red-550 p-1 px-3 text-white;
 }
 
+.card {
+  @apply bg-gray-100 p-2 md:p-5 rounded;
+}
+
 .content-style {
+  dl {
+    dt {
+      @apply mt-2;
+    }
+
+    dd {
+      @apply ml-5 font-light;
+    }
+  }
+
   p {
-    @apply block;
+    @apply block my-2;
+  }
+
+  ul {
+    @apply mt-5;
+
+    li {
+      @apply ml-5;
+    }
   }
 }

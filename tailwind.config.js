@@ -6,8 +6,10 @@ module.exports = {
     extend: {
       minHeight: {
         200: '200px',
+        51: '51vh'
       },
       maxWidth: {
+        90: '90px', 
         452: '452px',
       },
       width: {

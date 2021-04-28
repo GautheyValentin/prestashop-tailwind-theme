@@ -1,4 +1,4 @@
-{if $page.page_name == 'index' || $page.page_name == 'cart'}
+{if $page.page_name == 'index' || $page.page_name == 'cart' || $page.page_name == 'order-confirmation'}
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 px-5" itemscope
     itemtype="https://schema.org/ItemList">
     {foreach from=$products item="product" key="position"}

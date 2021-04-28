@@ -1,19 +1,16 @@
 
 {block name='step'}
   <section  id    = "{$identifier}"
-            class = "{[
-                        'checkout-step'   => true,
-                        '-current'        => $step_is_current,
-                        '-reachable'      => $step_is_reachable,
-                        '-complete'       => $step_is_complete,
-                        'js-current-step' => $step_is_current
-                    ]|classnames}"
+            class = "card"
   >
-    <h1 class="step-title h3">
-      <i class="material-icons rtl-no-flip done">&#xE876;</i>
-      <span class="step-number">{$position}</span>
+    <h1 class="text-xl uppercase font-medium">
+      <i class="fas fa-check"></i>
+      <span>{$position}</span>
       {$title}
-      <span class="step-edit text-muted"><i class="material-icons edit">mode_edit</i> {l s='Edit' d='Shop.Theme.Actions'}</span>
+
+      <span class="text-sm float-right">
+        <i class="fas fa-pen"></i> {l s='Edit' d='Shop.Theme.Actions'}
+      </span>
     </h1>
 
     <div class="content">

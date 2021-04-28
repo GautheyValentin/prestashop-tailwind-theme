@@ -1,11 +1,13 @@
 
 {block name='my_account_links'}
-  <a href="{$urls.pages.my_account}" class="account-link">
-    <i class="material-icons">&#xE5CB;</i>
-    <span>{l s='Back to your account' d='Shop.Theme.Customeraccount'}</span>
+<div class="space-x-5 mt-5">
+  <a href="{$urls.pages.my_account}">
+    <i class="fas fa-angle-left"></i>
+    <span class="ml-1">{l s='Back to your account' d='Shop.Theme.Customeraccount'}</span>
   </a>
-  <a href="{$urls.pages.index}" class="account-link">
-    <i class="material-icons">&#xE88A;</i>
-    <span>{l s='Home' d='Shop.Theme.Global'}</span>
+  <a href="{$urls.pages.index}">
+    <i class="fas fa-home"></i>
+    <span class="ml-1">{l s='Home' d='Shop.Theme.Global'}</span>
   </a>
+</div>
 {/block}

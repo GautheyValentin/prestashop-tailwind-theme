@@ -6,5 +6,7 @@
 {/block}
 
 {block name='page_content'}
-  {render file='customer/_partials/customer-form.tpl' ui=$customer_form}
+  <div class="max-w-xl w-full mx-auto mt-5 card">
+    {render file='customer/_partials/customer-form.tpl' ui=$customer_form}
+  </div>
 {/block}

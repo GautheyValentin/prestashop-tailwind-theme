@@ -31,7 +31,7 @@
           }
         </div>
       {elseif $customer.addresses|count > 0}
-        <div id="delivery-addresses" class="address-selector js-address-selector">
+        <div id="delivery-addresses" class="grid grid-cols-3 gap-4 mt-5">
           {include  file        = 'checkout/_partials/address-selector-block.tpl'
             addresses   = $customer.addresses
             name        = "id_address_delivery"
@@ -47,9 +47,13 @@
           <p class="alert alert-danger js-address-error" name="alert-delivery" style="display: none">{l s="Your address is incomplete, please update it." d="Shop.Notifications.Error"}</p>
         {/if}
 
-        <p class="add-address">
-          <a href="{$new_address_delivery_url}"><i class="material-icons">&#xE145;</i>{l s='add new address' d='Shop.Theme.Actions'}</a>
+        <p class="mt-5">
+          <a href="{$new_address_delivery_url}">
+            <i class="fas fa-plus"></i>
+            {l s='add new address' d='Shop.Theme.Actions'}
+          </a>
         </p>
+
 
         {if $use_same_address && !$cart.is_virtual}
           <p>
@@ -99,8 +103,8 @@
       {/if}
 
       {if !$form_has_continue_button}
-        <div class="clearfix">
-          <button type="submit" class="btn btn-primary continue float-xs-right" name="confirm-addresses" value="1">
+        <div class="flex justify-end">
+          <button type="submit" class="primary-red" name="confirm-addresses" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}
           </button>
           <input type="hidden" id="not-valid-addresses" value="{$not_valid_addresses}">

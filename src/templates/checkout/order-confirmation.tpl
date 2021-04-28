@@ -1,18 +1,18 @@
 {extends file='page.tpl'}
 
 {block name='page_content_container' prepend}
-    <section id="content-hook_order_confirmation" class="card">
+    <section id="content-hook_order_confirmation" class="card mt-5">
       <div class="card-block">
-        <div class="row">
-          <div class="col-md-12">
+        <div class="flex flex-col w-full">
 
             {block name='order_confirmation_header'}
-              <h3 class="h1 card-title">
-                <i class="material-icons rtl-no-flip done">&#xE876;</i>{l s='Your order is confirmed' d='Shop.Theme.Checkout'}
+              <h3 class="font-medium text-2xl text-center">
+                <i class="fas fa-check"></i>
+                {l s='Your order is confirmed' d='Shop.Theme.Checkout'}
               </h3>
             {/block}
 
-            <p>
+            <p class="text-center">
               {l s='An email has been sent to your mail address %email%.' d='Shop.Theme.Checkout' sprintf=['%email%' => $customer.email]}
               {if $order.details.invoice_url}
                 {* [1][/1] is for a HTML tag. *}
@@ -31,17 +31,15 @@
               {$HOOK_ORDER_CONFIRMATION nofilter}
             {/block}
 
-          </div>
         </div>
       </div>
     </section>
 {/block}
 
 {block name='page_content_container'}
-  <section id="content" class="page-content page-order-confirmation card">
-    <div class="card-block">
-      <div class="row">
-
+  <section id="content" class="card mt-5">
+    <div class="bg-gray-200 p-2 lg:mx-5 lg:p-5 rounded">
+      <div class="flex flex-wrap">
         {block name='order_confirmation_table'}
           {include
             file='checkout/_partials/order-confirmation-table.tpl'
@@ -54,14 +52,31 @@
         {/block}
 
         {block name='order_details'}
-          <div id="order-details" class="col-md-4">
-            <h3 class="h3 card-title">{l s='Order details' d='Shop.Theme.Checkout'}:</h3>
-            <ul>
-              <li>{l s='Order reference: %reference%' d='Shop.Theme.Checkout' sprintf=['%reference%' => $order.details.reference]}</li>
-              <li>{l s='Payment method: %method%' d='Shop.Theme.Checkout' sprintf=['%method%' => $order.details.payment]}</li>
+          <div id="order-details" class="w-full mt-5 md:mt-0 md:w-4/12 md:px-5">
+            <h3 class="uppercase font-medium">{l s='Order details' d='Shop.Theme.Checkout'}:</h3>
+            <ul class="mt-2 font-light">
+              <li>
+                {l 
+                  s='Order reference: %reference%' 
+                  d='Shop.Theme.Checkout' 
+                  sprintf=['%reference%' => "<span class='font-medium'>{$order.details.reference}</span>"]
+                }
+              </li>
+              <li>
+                {l 
+                  s='Payment method: %method%' 
+                  d='Shop.Theme.Checkout' 
+                  sprintf=['%method%' => "<span class='font-medium'>{$order.details.payment}</span>"]
+                }
+              </li>
               {if !$order.details.is_virtual}
                 <li>
-                  {l s='Shipping method: %method%' d='Shop.Theme.Checkout' sprintf=['%method%' => $order.carrier.name]}<br>
+                  {l 
+                    s='Shipping method: %method%' 
+                    d='Shop.Theme.Checkout' 
+                    sprintf=['%method%' => "<span class='font-medium'>{$order.carrier.name}</span>"]
+                  }
+                  <br>
                   <em>{$order.carrier.delay}</em>
                 </li>
               {/if}
@@ -75,13 +90,9 @@
 
   {block name='hook_payment_return'}
     {if ! empty($HOOK_PAYMENT_RETURN)}
-    <section id="content-hook_payment_return" class="card definition-list">
-      <div class="card-block">
-        <div class="row">
-          <div class="col-md-12">
-            {$HOOK_PAYMENT_RETURN nofilter}
-          </div>
-        </div>
+    <section id="content-hook_payment_return" class="card mt-5">
+      <div class="content-style">
+        {$HOOK_PAYMENT_RETURN nofilter}
       </div>
     </section>
     {/if}

@@ -6,65 +6,50 @@
 {/block}
 
 {block name='page_content'}
-  <div class="row">
-    <div class="links">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-5">
 
-      <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="identity-link" href="{$urls.pages.identity}">
-        <span class="link-item">
-          <i class="material-icons">&#xE853;</i>
-          {l s='Information' d='Shop.Theme.Customeraccount'}
-        </span>
+      <a class="card text-lg items-center flex justify-center" id="identity-link" href="{$urls.pages.identity}">
+        <i class="fas fa-info-circle"></i>
+        <span class="ml-2">{l s='Information' d='Shop.Theme.Customeraccount'}</span>
       </a>
 
       {if $customer.addresses|count}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="addresses-link" href="{$urls.pages.addresses}">
-          <span class="link-item">
-            <i class="material-icons">&#xE56A;</i>
-            {l s='Addresses' d='Shop.Theme.Customeraccount'}
-          </span>
+        <a class="card text-lg items-center flex justify-center" id="addresses-link" href="{$urls.pages.addresses}">
+          <i class="fas fa-map-marker-alt"></i>
+          <span class="ml-2">{l s='Addresses' d='Shop.Theme.Customeraccount'}</span>
         </a>
       {else}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="address-link" href="{$urls.pages.address}">
-          <span class="link-item">
-            <i class="material-icons">&#xE567;</i>
-            {l s='Add first address' d='Shop.Theme.Customeraccount'}
-          </span>
+        <a class="card text-lg items-center flex justify-center" id="address-link" href="{$urls.pages.address}">
+          <i class="fas fa-map-marker-alt"></i>
+          <span class="ml-2">{l s='Add first address' d='Shop.Theme.Customeraccount'}</span>
         </a>
       {/if}
 
       {if !$configuration.is_catalog}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="history-link" href="{$urls.pages.history}">
-          <span class="link-item">
-            <i class="material-icons">&#xE916;</i>
-            {l s='Order history and details' d='Shop.Theme.Customeraccount'}
-          </span>
+        <a class="card text-lg items-center flex justify-center" id="history-link" href="{$urls.pages.history}">
+          <i class="fas fa-history"></i>
+          <span class="ml-2">{l s='Order history and details' d='Shop.Theme.Customeraccount'}</span>
         </a>
       {/if}
 
       {if !$configuration.is_catalog}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="order-slips-link" href="{$urls.pages.order_slip}">
-          <span class="link-item">
-            <i class="material-icons">&#xE8B0;</i>
-            {l s='Credit slips' d='Shop.Theme.Customeraccount'}
-          </span>
+        <a class="card text-lg items-center flex justify-center" id="order-slips-link" href="{$urls.pages.order_slip}">
+          <i class="fas fa-clipboard-list"></i>
+          <span class="ml-2">{l s='Credit slips' d='Shop.Theme.Customeraccount'}</span>
         </a>
       {/if}
 
       {if $configuration.voucher_enabled && !$configuration.is_catalog}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="discounts-link" href="{$urls.pages.discount}">
-          <span class="link-item">
-            <i class="material-icons">&#xE54E;</i>
-            {l s='Vouchers' d='Shop.Theme.Customeraccount'}
-          </span>
+        <a class="card text-lg items-center flex justify-center" id="discounts-link" href="{$urls.pages.discount}">
+          <i class="fas fa-ticket-alt"></i>
+          <span class="ml-2">{l s='Vouchers' d='Shop.Theme.Customeraccount'}</span>
         </a>
       {/if}
 
       {if $configuration.return_enabled && !$configuration.is_catalog}
-        <a class="col-lg-4 col-md-6 col-sm-6 col-xs-12" id="returns-link" href="{$urls.pages.order_follow}">
-          <span class="link-item">
-            <i class="material-icons">&#xE860;</i>
-            {l s='Merchandise returns' d='Shop.Theme.Customeraccount'}
-          </span>
+        <a class="card text-lg items-center flex justify-center" href="{$urls.pages.order_follow}">
+          <i class="fas fa-truck-loading"></i>
+          <span class="ml-2">{l s='Merchandise returns' d='Shop.Theme.Customeraccount'}</span>
         </a>
       {/if}
 
@@ -72,17 +57,17 @@
         {hook h='displayCustomerAccount'}
       {/block}
 
+      <a class="card text-lg items-center flex justify-center" href="{$urls.actions.logout}" >
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="ml-2">{l s='Sign out' d='Shop.Theme.Actions'}</span>
+      </a>
+
     </div>
-  </div>
 {/block}
 
 
 {block name='page_footer'}
   {block name='my_account_links'}
-    <div class="text-sm-center">
-      <a href="{$urls.actions.logout}" >
-        {l s='Sign out' d='Shop.Theme.Actions'}
-      </a>
-    </div>
+
   {/block}
 {/block}

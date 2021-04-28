@@ -16,7 +16,7 @@
   {if $is_free}
     <p>{l s='No payment needed for this order' d='Shop.Theme.Checkout'}</p>
   {/if}
-  <div class="payment-options {if $is_free}hidden-xs-up{/if}">
+  <div class="mt-5 ml-5{if $is_free}{/if}">
     {foreach from=$payment_options item="module_options"}
       {foreach from=$module_options item="option"}
         <div>
@@ -58,7 +58,7 @@
         {if $option.additionalInformation}
           <div
             id="{$option.id}-additional-information"
-            class="js-additional-information definition-list additional-information{if $option.id != $selected_payment_option} ps-hidden {/if}"
+            class="js-additional-information content-style mt-2 bg-gray-200 rounded p-2{if $option.id != $selected_payment_option} ps-hidden {/if}"
           >
             {$option.additionalInformation nofilter}
           </div>
@@ -94,27 +94,21 @@
       {l s='By confirming the order, you certify that you have read and agree with all of the conditions below:' d='Shop.Theme.Checkout'}
     </p>
 
-    <form id="conditions-to-approve" method="GET">
+    <form class="mt-5" id="conditions-to-approve" method="GET">
       <ul>
         {foreach from=$conditions_to_approve item="condition" key="condition_name"}
           <li>
-            <div class="float-xs-left">
-              <span class="custom-checkbox">
-                <input  id    = "conditions_to_approve[{$condition_name}]"
-                        name  = "conditions_to_approve[{$condition_name}]"
-                        required
-                        type  = "checkbox"
-                        value = "1"
-                        class = "ps-shown-by-js"
-                >
-                <span><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-              </span>
-            </div>
-            <div class="condition-label">
               <label class="js-terms" for="conditions_to_approve[{$condition_name}]">
+                <input    
+                  id    = "conditions_to_approve[{$condition_name}]"
+                  name  = "conditions_to_approve[{$condition_name}]"
+                  required
+                  type  = "checkbox"
+                  value = "1"
+                  class = ""
+                >
                 {$condition nofilter}
               </label>
-            </div>
           </li>
         {/foreach}
       </ul>
@@ -126,10 +120,12 @@
   {/if}
 
   <div id="payment-confirmation">
-    <div class="ps-shown-by-js">
-      <button type="submit" class="btn btn-primary center-block{if !$selected_payment_option} disabled{/if}">
-        {l s='Place order' d='Shop.Theme.Checkout'}
-      </button>
+    <div class="flex flex-col">
+      <div class="flex justify-end">
+        <button type="submit" class="primary-red{if !$selected_payment_option} disabled{/if}">
+          {l s='Place order' d='Shop.Theme.Checkout'}
+        </button>
+      </div>
       {if $show_final_summary}
         <article class="alert alert-danger mt-2 js-alert-payment-conditions" role="alert" data-alert="danger">
           {l

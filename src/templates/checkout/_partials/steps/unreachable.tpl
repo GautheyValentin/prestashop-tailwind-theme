@@ -1,8 +1,8 @@
 
 {block name='step'}
-  <section class="checkout-step -unreachable" id="{$identifier}">
-    <h1 class="step-title h3">
-      <span class="step-number">{$position}</span> {$title}
+  <section class="card border-t" id="{$identifier}">
+    <h1 class="text-xl uppercase font-medium">
+      <span>{$position}</span> {$title}
     </h1>
   </section>
 {/block}

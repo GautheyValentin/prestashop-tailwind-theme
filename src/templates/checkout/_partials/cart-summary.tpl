@@ -1,6 +1,7 @@
 
-<section id="js-checkout-summary" class="card js-cart" data-refresh-url="{$urls.pages.cart}?ajax=1&action=refresh">
-  <div class="card-block">
+<section id="js-checkout-summary" class="card" data-refresh-url="{$urls.pages.cart}?ajax=1&action=refresh">
+
+  <div class="">
     {block name='hook_checkout_summary_top'}
       {include file='checkout/_partials/cart-summary-top.tpl' cart=$cart}
     {/block}

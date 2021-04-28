@@ -1,10 +1,10 @@
 
 {if $errors|count}
-  <div class="help-block">
+  <div>
     {block name='form_errors'}
       <ul>
         {foreach $errors as $error}
-          <li class="alert alert-danger">{$error|nl2br nofilter}</li>
+          <li class="text-red-550 font-light text-xs">{$error|nl2br nofilter}</li>
         {/foreach}
       </ul>
     {/block}

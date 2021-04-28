@@ -2,21 +2,21 @@
 {block name='order_products_table'}
   <form id="order-return-form" action="{$urls.pages.order_follow}" method="post">
 
-    <div class="box hidden-sm-down">
-      <table id="order-products" class="table table-bordered return">
-        <thead class="thead-default">
+    <div class="card mt-5 hidden md:block">
+      <table id="order-products" class="w-full">
+        <thead class="bg-gray-200">
           <tr>
-            <th class="head-checkbox"><input type="checkbox"/></th>
-            <th>{l s='Product' d='Shop.Theme.Catalog'}</th>
-            <th>{l s='Quantity' d='Shop.Theme.Catalog'}</th>
-            <th>{l s='Returned' d='Shop.Theme.Customeraccount'}</th>
-            <th>{l s='Unit price' d='Shop.Theme.Catalog'}</th>
-            <th>{l s='Total price' d='Shop.Theme.Catalog'}</th>
+            <th class="text-left p-2"><input type="checkbox"/></th>
+            <th class="text-left p-2">{l s='Product' d='Shop.Theme.Catalog'}</th>
+            <th class="text-left p-2">{l s='Quantity' d='Shop.Theme.Catalog'}</th>
+            <th class="text-left p-2">{l s='Returned' d='Shop.Theme.Customeraccount'}</th>
+            <th class="text-left p-2">{l s='Unit price' d='Shop.Theme.Catalog'}</th>
+            <th class="text-left p-2">{l s='Total price' d='Shop.Theme.Catalog'}</th>
           </tr>
         </thead>
         {foreach from=$order.products item=product name=products}
           <tr>
-            <td>
+            <td class="border text-left p-2">
               {if !$product.customizations}
                 <span id="_desktop_product_line_{$product.id_order_detail}">
                 <input type="checkbox" id="cb_{$product.id_order_detail}" name="ids_order_detail[{$product.id_order_detail}]" value="{$product.id_order_detail}">
@@ -29,7 +29,7 @@
                 {/foreach}
               {/if}
             </td>
-            <td>
+            <td class="border text-left p-2">
               <strong>{$product.name}</strong><br/>
               {if $product.product_reference}
                 {l s='Reference' d='Shop.Theme.Catalog'}: {$product.product_reference}<br/>
@@ -76,14 +76,15 @@
                 {/foreach}
               {/if}
             </td>
-            <td class="qty">
+            <td class="border text-left p-2">
+              <div class="flex items-center">
               {if !$product.customizations}
-                <div class="current">
+                <div class="w-2/12">
                   {$product.quantity}
                 </div>
                 {if $product.quantity > $product.qty_returned}
-                  <div class="select" id="_desktop_return_qty_{$product.id_order_detail}">
-                    <select name="order_qte_input[{$product.id_order_detail}]" class="form-control form-control-select">
+                  <div class="w-10/12" id="_desktop_return_qty_{$product.id_order_detail}">
+                    <select name="order_qte_input[{$product.id_order_detail}]" class="white-input w-full">
                       {section name=quantity start=1 loop=$product.quantity+1-$product.qty_returned}
                         <option value="{$smarty.section.quantity.index}">{$smarty.section.quantity.index}</option>
                       {/section}
@@ -106,85 +107,83 @@
                     </select>
                   </div>
                 {/foreach}
-                <div class="clearfix"></div>
               {/if}
+              </div>
             </td>
-            <td class="text-xs-right">{$product.qty_returned}</td>
-            <td class="text-xs-right">{$product.price}</td>
-            <td class="text-xs-right">{$product.total}</td>
+            <td class="border text-right p-2">{$product.qty_returned}</td>
+            <td class="border text-right p-2">{$product.price}</td>
+            <td class="border text-right p-2">{$product.total}</td>
           </tr>
         {/foreach}
         <tfoot>
           {foreach $order.subtotals as $line}
             {if $line.value}
-              <tr class="text-xs-right line-{$line.type}">
-                <td colspan="5">{$line.label}</td>
-                <td colspan="2">{$line.value}</td>
+              <tr>
+                <td colspan="5" class="border p-2 text-right">{$line.label}</td>
+                <td colspan="2" class="border p-2 text-right">{$line.value}</td>
               </tr>
             {/if}
           {/foreach}
-          <tr class="text-xs-right line-{$order.totals.total.type}">
-            <td colspan="5">{$order.totals.total.label}</td>
-            <td colspan="2">{$order.totals.total.value}</td>
+          <tr class="font-medium">
+            <td colspan="5" class="border p-2 text-right">{$order.totals.total.label}</td>
+            <td colspan="2" class="border p-2 text-right">{$order.totals.total.value}</td>
           </tr>
         </tfoot>
       </table>
     </div>
 
-    <div class="order-items hidden-md-up box">
+    <div class="card mt-5 md:hidden">
       {foreach from=$order.products item=product}
-        <div class="order-item">
-          <div class="row">
-            <div class="checkbox">
-              {if !$product.customizations}
-                <span id="_mobile_product_line_{$product.id_order_detail}"></span>
-              {else}
-                {foreach $product.customizations  as $customization}
-                  <span id="_mobile_product_customization_line_{$product.id_order_detail}_{$customization.id_customization}"></span>
-                {/foreach}
-              {/if}
-            </div>
-            <div class="content">
-              <div class="row">
-                <div class="col-sm-5 desc">
-                  <div class="name">{$product.name}</div>
-                  {if $product.product_reference}
-                    <div class="ref">{l s='Reference' d='Shop.Theme.Catalog'}: {$product.product_reference}</div>
-                  {/if}
-                  {if $product.customizations}
-                    {foreach $product.customizations as $customization}
-                      <div class="customization">
-                        <a href="#" data-toggle="modal" data-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
-                      </div>
-                      <div id="_mobile_product_customization_modal_wrapper_{$customization.id_customization}">
-                      </div>
-                    {/foreach}
-                  {/if}
-                </div>
-                <div class="col-sm-7 qty">
-                  <div class="row">
-                    <div class="col-xs-4 text-sm-left text-xs-left">
-                      {$product.price}
+        <div class="flex flex-wrap">
+          <div class="w-1/12">
+            {if !$product.customizations}
+              <input type="checkbox" id="cb_{$product.id_order_detail}" name="ids_order_detail[{$product.id_order_detail}]" value="{$product.id_order_detail}">
+            {else}
+              {foreach $product.customizations  as $customization}
+                <input type="checkbox" id="cb_{$product.id_order_detail}" name="ids_order_detail[{$product.id_order_detail}]" value="{$product.id_order_detail}">
+              {/foreach}
+            {/if}
+          </div>
+          <div class="w-11/12">
+            <div class="flex flex-wrap">
+              <div class="w-full sm:w-5/12">
+                <div class="font-medium">{$product.name}</div>
+                {if $product.product_reference}
+                  <div class="ref">{l s='Reference' d='Shop.Theme.Catalog'}: {$product.product_reference}</div>
+                {/if}
+                {if $product.customizations}
+                  {foreach $product.customizations as $customization}
+                    <div class="customization">
+                      <a href="#" data-toggle="modal" data-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
                     </div>
-                    <div class="col-xs-4">
-                      {if $product.customizations}
-                        {foreach $product.customizations as $customization}
-                          <div class="q">{l s='Quantity' d='Shop.Theme.Catalog'}: {$customization.quantity}</div>
-                          <div class="s" id="_mobile_return_qty_{$product.id_order_detail}_{$customization.id_customization}"></div>
-                        {/foreach}
-                      {else}
-                        <div class="q">{l s='Quantity' d='Shop.Theme.Catalog'}: {$product.quantity}</div>
-                        {if $product.quantity > $product.qty_returned}
-                          <div class="s" id="_mobile_return_qty_{$product.id_order_detail}"></div>
-                        {/if}
+                    <div id="_mobile_product_customization_modal_wrapper_{$customization.id_customization}">
+                    </div>
+                  {/foreach}
+                {/if}
+              </div>
+              <div class="w-full sm:w-7/12">
+                <div class="flex">
+                  <div class="w-1/3">
+                    {$product.price}
+                  </div>
+                  <div class="w-1/3">
+                    {if $product.customizations}
+                      {foreach $product.customizations as $customization}
+                        <div class="q">{l s='Quantity' d='Shop.Theme.Catalog'}: {$customization.quantity}</div>
+                        <div class="s" id="_mobile_return_qty_{$product.id_order_detail}_{$customization.id_customization}"></div>
+                      {/foreach}
+                    {else}
+                      <div class="q">{l s='Quantity' d='Shop.Theme.Catalog'}: {$product.quantity}</div>
+                      {if $product.quantity > $product.qty_returned}
+                        <div class="s" id="_mobile_return_qty_{$product.id_order_detail}"></div>
                       {/if}
-                      {if $product.qty_returned > 0}
-                        <div>{l s='Returned' d='Shop.Theme.Customeraccount'}: {$product.qty_returned}</div>
-                      {/if}
-                    </div>
-                    <div class="col-xs-4 text-xs-right">
-                      {$product.total}
-                    </div>
+                    {/if}
+                    {if $product.qty_returned > 0}
+                      <div>{l s='Returned' d='Shop.Theme.Customeraccount'}: {$product.qty_returned}</div>
+                    {/if}
+                  </div>
+                  <div class="w-1/3 text-right">
+                    {$product.total}
                   </div>
                 </div>
               </div>
@@ -193,34 +192,32 @@
         </div>
       {/foreach}
     </div>
-    <div class="order-totals hidden-md-up box">
+    <div class="card mt-5 md:hidden">
       {foreach $order.subtotals as $line}
         {if $line.value}
-          <div class="order-total row">
-            <div class="col-xs-8"><strong>{$line.label}</strong></div>
-            <div class="col-xs-4 text-xs-right">{$line.value}</div>
+          <div class="flex">
+            <div class="w-8/12"><strong>{$line.label}</strong></div>
+            <div class="w-4/12 text-right">{$line.value}</div>
           </div>
         {/if}
       {/foreach}
-      <div class="order-total row">
-        <div class="col-xs-8"><strong>{$order.totals.total.label}</strong></div>
-        <div class="col-xs-4 text-xs-right">{$order.totals.total.value}</div>
+      <div class="flex font-medium">
+        <div class="w-8/12"><strong>{$order.totals.total.label}</strong></div>
+        <div class="w-4/12 text-right">{$order.totals.total.value}</div>
       </div>
     </div>
 
-    <div class="box">
+    <div class="card mt-5">
       <header>
-        <h3>{l s='Merchandise return' d='Shop.Theme.Customeraccount'}</h3>
-        <p>{l s='If you wish to return one or more products, please mark the corresponding boxes and provide an explanation for the return. When complete, click the button below.' d='Shop.Theme.Customeraccount'}</p>
+        <h3 class="font-medium text-lg">{l s='Merchandise return' d='Shop.Theme.Customeraccount'}</h3>
+        <p class="mt-2">{l s='If you wish to return one or more products, please mark the corresponding boxes and provide an explanation for the return. When complete, click the button below.' d='Shop.Theme.Customeraccount'}</p>
       </header>
-      <section class="form-fields">
-        <div class="form-group">
-          <textarea cols="67" rows="3" name="returnText" class="form-control"></textarea>
-        </div>
+      <section class="mt-5">
+        <textarea rows="3" name="returnText" class="w-full text-sm p-2"></textarea>
       </section>
-      <footer class="form-footer">
+      <footer class="mt-5 flex justify-end">
         <input type="hidden" name="id_order" value="{$order.details.id}">
-        <button class="form-control-submit btn btn-primary" type="submit" name="submitReturnMerchandise">
+        <button class="primary-red" type="submit" name="submitReturnMerchandise">
           {l s='Request a return' d='Shop.Theme.Customeraccount'}
         </button>
       </footer>

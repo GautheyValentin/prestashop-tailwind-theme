@@ -10,7 +10,7 @@
 {/block}
 
 {block name='page_content'}
-  <div class="address-form">
+  <div class="max-w-xl w-full mx-auto mt-5 card">
     {render template="customer/_partials/address-form.tpl" ui=$address_form}
   </div>
 {/block}

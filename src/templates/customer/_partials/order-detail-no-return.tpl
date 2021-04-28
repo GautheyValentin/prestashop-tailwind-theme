@@ -1,23 +1,24 @@
 
 {block name='order_products_table'}
-  <div class="box hidden-sm-down">
-    <table id="order-products" class="table table-bordered">
-      <thead class="thead-default">
+  <div class="hidden md:block card mt-5">
+    <table id="order-products" class="w-full">
+      <thead class="bg-gray-200">
         <tr>
-          <th>{l s='Product' d='Shop.Theme.Catalog'}</th>
-          <th>{l s='Quantity' d='Shop.Theme.Catalog'}</th>
-          <th>{l s='Unit price' d='Shop.Theme.Catalog'}</th>
-          <th>{l s='Total price' d='Shop.Theme.Catalog'}</th>
+          <th class="text-left p-2">{l s='Product' d='Shop.Theme.Catalog'}</th>
+          <th class="text-left p-2">{l s='Quantity' d='Shop.Theme.Catalog'}</th>
+          <th class="text-left p-2">{l s='Unit price' d='Shop.Theme.Catalog'}</th>
+          <th class="text-left p-2">{l s='Total price' d='Shop.Theme.Catalog'}</th>
         </tr>
       </thead>
       {foreach from=$order.products item=product}
         <tr>
-          <td>
-            <strong>
-              <a {if isset($product.download_link)}href="{$product.download_link}"{/if}>
-                {$product.name}
-              </a>
-            </strong><br/>
+          <td class="border p-2">
+            <a class="font-medium" {if isset($product.download_link)}href="{$product.download_link}"{/if}>
+              {$product.name}
+            </a>
+            
+            <br/>
+
             {if $product.product_reference}
               {l s='Reference' d='Shop.Theme.Catalog'}: {$product.product_reference}<br/>
             {/if}
@@ -63,7 +64,7 @@
               {/foreach}
             {/if}
           </td>
-          <td>
+          <td class="border p-2">
             {if $product.customizations}
               {foreach $product.customizations as $customization}
                 {$customization.quantity}
@@ -72,39 +73,38 @@
               {$product.quantity}
             {/if}
           </td>
-          <td class="text-xs-right">{$product.price}</td>
-          <td class="text-xs-right">{$product.total}</td>
+          <td class="border p-2 text-right">{$product.price}</td>
+          <td class="border p-2 text-right">{$product.total}</td>
         </tr>
       {/foreach}
       <tfoot>
         {foreach $order.subtotals as $line}
           {if $line.value}
-            <tr class="text-xs-right line-{$line.type}">
-              <td colspan="3">{$line.label}</td>
-              <td>{$line.value}</td>
+            <tr>
+              <td colspan="3" class="border p-2 text-right">{$line.label}</td>
+              <td class="border p-2 text-right">{$line.value}</td>
             </tr>
           {/if}
         {/foreach}
-        <tr class="text-xs-right line-{$order.totals.total.type}">
-          <td colspan="3">{$order.totals.total.label}</td>
-          <td>{$order.totals.total.value}</td>
+        <tr class="font-medium">
+          <td colspan="3" class="border p-2 text-right">{$order.totals.total.label}</td>
+          <td class="border p-2 text-right">{$order.totals.total.value}</td>
         </tr>
       </tfoot>
     </table>
   </div>
 
-  <div class="order-items hidden-md-up box">
+  <div class="card mt-5 md:hidden divide-y">
     {foreach from=$order.products item=product}
-      <div class="order-item">
-        <div class="row">
-          <div class="col-sm-5 desc">
-            <div class="name">{$product.name}</div>
+        <div class="flex flex-wrap py-2">
+          <div class="w-full sm:w-5/12">
+            <div class="font-medium">{$product.name}</div>
             {if $product.product_reference}
-              <div class="ref">{l s='Reference' d='Shop.Theme.Catalog'}: {$product.product_reference}</div>
+              <div class="font-medium">{l s='Reference' d='Shop.Theme.Catalog'}: {$product.product_reference}</div>
             {/if}
             {if $product.customizations}
               {foreach $product.customizations as $customization}
-                <div class="customization">
+                <div class="font-medium">
                   <a href="#" data-toggle="modal" data-target="#product-customizations-modal-{$customization.id_customization}">{l s='Product customization' d='Shop.Theme.Catalog'}</a>
                 </div>
                 <div id="_mobile_product_customization_modal_wrapper_{$customization.id_customization}">
@@ -112,41 +112,38 @@
               {/foreach}
             {/if}
           </div>
-          <div class="col-sm-7 qty">
-            <div class="row">
-              <div class="col-xs-4 text-sm-left text-xs-left">
-                {$product.price}
-              </div>
-              <div class="col-xs-4">
-                {if $product.customizations}
-                  {foreach $product.customizations as $customization}
-                    {$customization.quantity}
-                  {/foreach}
-                {else}
-                  {$product.quantity}
-                {/if}
-              </div>
-              <div class="col-xs-4 text-xs-right">
-                {$product.total}
-              </div>
+          <div class="w-full sm:w-7/12 flex">
+            <div class="w-4/12">
+              {$product.price}
+            </div>
+            <div class="w-4/12">
+              {if $product.customizations}
+                {foreach $product.customizations as $customization}
+                  {$customization.quantity}
+                {/foreach}
+              {else}
+                {$product.quantity}
+              {/if}
+            </div>
+            <div class="w-4/12 text-right">
+              {$product.total}
             </div>
           </div>
         </div>
-      </div>
     {/foreach}
   </div>
-  <div class="order-totals hidden-md-up box">
+  <div class="card mt-5 md:hidden">
     {foreach $order.subtotals as $line}
       {if $line.value}
-        <div class="order-total row">
-          <div class="col-xs-8"><strong>{$line.label}</strong></div>
-          <div class="col-xs-4 text-xs-right">{$line.value}</div>
+        <div class="flex">
+          <div class="w-8/12"><strong>{$line.label}</strong></div>
+          <div class="w-4/12 text-right">{$line.value}</div>
         </div>
       {/if}
     {/foreach}
-    <div class="order-total row">
-      <div class="col-xs-8"><strong>{$order.totals.total.label}</strong></div>
-      <div class="col-xs-4 text-xs-right">{$order.totals.total.value}</div>
+    <div class="flex">
+      <div class="w-8/12"><strong>{$order.totals.total.label}</strong></div>
+      <div class="w-4/12 text-right">{$order.totals.total.value}</div>
     </div>
   </div>
 {/block}

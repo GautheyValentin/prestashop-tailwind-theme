@@ -5,15 +5,33 @@
     <input type="hidden" name="{$field.name}" value="{$field.value}">
   {/block}
 
+{elseif $field.type === 'checkbox'}
+
+{block name='form_field_item_checkbox'}
+  <div class="w-full">
+    <label class="text-sm font-light">
+      <input 
+        name="{$field.name}" 
+        type="checkbox" 
+        value="1" 
+        class="mr-1"
+        {if $field.value}checked="checked"{/if} 
+        {if $field.required}required{/if}
+      >
+      {$field.label nofilter}
+    </label>
+  </div>
+{/block}
+
 {else}
 
-  <div class="form-group row {if !empty($field.errors)}has-error{/if}">
-    <label class="col-md-3 form-control-label{if $field.required} required{/if}">
+  <div class="flex w-full flex-wrap md:items-center{if !empty($field.errors)} has-error{/if}">
+    <label class="w-full md:w-3/12 md:text-right{if $field.required} required{/if}">
       {if $field.type !== 'checkbox'}
         {$field.label}
       {/if}
     </label>
-    <div class="col-md-6{if ($field.type === 'radio-buttons')} form-control-valign{/if}">
+    <div class="w-full md:w-8/12 md:px-5{if ($field.type === 'radio-buttons')} form-control-valign{/if}">
 
       {if $field.type === 'select'}
 
@@ -30,7 +48,7 @@
 
         {block name='form_field_item_country'}
           <select
-          class="form-control form-control-select js-country"
+          class="white-input w-full"
           name="{$field.name}"
           {if $field.required}required{/if}
           >
@@ -46,31 +64,16 @@
         {block name='form_field_item_radio'}
           {foreach from=$field.availableValues item="label" key="value"}
             <label class="radio-inline">
-              <span class="custom-radio">
-                <input
-                  name="{$field.name}"
-                  type="radio"
-                  value="{$value}"
-                  {if $field.required}required{/if}
-                  {if $value eq $field.value} checked {/if}
-                >
-                <span></span>
-              </span>
+              <input
+                name="{$field.name}"
+                type="radio"
+                value="{$value}"
+                {if $field.required}required{/if}
+                {if $value eq $field.value} checked {/if}
+              >
               {$label}
             </label>
           {/foreach}
-        {/block}
-
-      {elseif $field.type === 'checkbox'}
-
-        {block name='form_field_item_checkbox'}
-          <span class="custom-checkbox">
-            <label>
-              <input name="{$field.name}" type="checkbox" value="1" {if $field.value}checked="checked"{/if} {if $field.required}required{/if}>
-              <span><i class="material-icons rtl-no-flip checkbox-checked">&#xE5CA;</i></span>
-              {$field.label nofilter}
-            </label>
-          </span>
         {/block}
 
       {elseif $field.type === 'date'}
@@ -87,7 +90,7 @@
       {elseif $field.type === 'birthday'}
 
         {block name='form_field_item_birthday'}
-          <div class="js-parent-focus">
+          <div class="white-input w-full">
             {html_select_date
             field_order=DMY
             time={$field.value}
@@ -109,9 +112,9 @@
       {elseif $field.type === 'password'}
 
         {block name='form_field_item_password'}
-          <div class="input-group js-parent-focus">
+          <div class="relative w-full">
             <input
-              class="form-control js-child-focus js-visible-password"
+              class="password-input w-full"
               name="{$field.name}"
               title="{l s='At least 5 characters long' d='Shop.Forms.Help'}"
               type="password"
@@ -120,9 +123,9 @@
               pattern=".{literal}{{/literal}5,{literal}}{/literal}"
               {if $field.required}required{/if}
             >
-            <span class="input-group-btn">
+            <span class="absolute right-0.5 top-0.5">
               <button
-                class="btn"
+                class="primary-red"
                 type="button"
                 data-action="show-password"
                 data-text-show="{l s='Show' d='Shop.Theme.Actions'}"
@@ -138,7 +141,7 @@
 
         {block name='form_field_item_other'}
           <input
-            class="form-control"
+            class="white-input w-full"
             name="{$field.name}"
             type="{$field.type}"
             value="{$field.value}"
@@ -147,11 +150,6 @@
             {if $field.maxLength}maxlength="{$field.maxLength}"{/if}
             {if $field.required}required{/if}
           >
-          {if isset($field.availableValues.comment)}
-            <span class="form-control-comment">
-              {$field.availableValues.comment}
-            </span>
-          {/if}
         {/block}
 
       {/if}
@@ -162,7 +160,7 @@
 
     </div>
 
-    <div class="col-md-3 form-control-comment">
+    <div class="w-full md:w-1/12 text-light text-xs">
       {block name='form_field_comment'}
         {if (!$field.required && !in_array($field.type, ['radio-buttons', 'checkbox']))}
          {l s='Optional' d='Shop.Forms.Labels'}
@@ -170,5 +168,13 @@
       {/block}
     </div>
   </div>
+  {if isset($field.availableValues.comment)}
+    <div class="flex">
+      <div class="hidden md:flex md:w-3/12"></div>
+      <span class="font-light text-xs md:px-5">
+        {$field.availableValues.comment}
+      </span>
+    </div>
+  {/if}
 
 {/if}

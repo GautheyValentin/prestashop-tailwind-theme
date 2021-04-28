@@ -9,14 +9,14 @@
     </div>
 
     {block name='address_block_item_actions'}
-      <div class="address-footer">
+      <div class="space-x-3">
         <a href="{url entity=address id=$address.id}" data-link-action="edit-address">
-          <i class="material-icons">&#xE254;</i>
-          <span>{l s='Update' d='Shop.Theme.Actions'}</span>
+          <i class="fas fa-pen"></i>
+          <span class="ml-1">{l s='Update' d='Shop.Theme.Actions'}</span>
         </a>
         <a href="{url entity=address id=$address.id params=['delete' => 1, 'token' => $token]}" data-link-action="delete-address">
-          <i class="material-icons">&#xE872;</i>
-          <span>{l s='Delete' d='Shop.Theme.Actions'}</span>
+          <i class="fas fa-trash-alt"></i>
+          <span class="ml-1">{l s='Delete' d='Shop.Theme.Actions'}</span>
         </a>
       </div>
     {/block}

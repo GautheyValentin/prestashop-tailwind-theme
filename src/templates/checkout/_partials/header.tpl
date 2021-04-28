@@ -1,51 +1,38 @@
-
-{block name='header_nav'}
-  <nav class="header-nav">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 hidden-sm-down" id="_desktop_logo">
-          <a href="{$urls.pages.index}">
-            <img class="logo img-responsive" src="{$shop.logo}" alt="{$shop.name} {l s='logo' d='Shop.Theme.Global'}" loading="lazy">
-          </a>
-        </div>
-        <div class="col-md-6 text-xs-right hidden-sm-down">
-          {hook h='displayNav1'}
-        </div>
-        <div class="hidden-md-up text-sm-center mobile">
-          {hook h='displayNav2'}
-          <div class="float-xs-left" id="menu-icon">
-            <i class="material-icons">&#xE5D2;</i>
-          </div>
-          <div class="float-xs-right" id="_mobile_cart"></div>
-          <div class="float-xs-right" id="_mobile_user_info"></div>
-          <div class="top-logo" id="_mobile_logo"></div>
-          <div class="clearfix"></div>
-        </div>
-      </div>
-    </div>
-  </nav>
+{block name='header_banner'}
+  <div class="header-banner">
+    {hook h='displayBanner'}
+  </div>
 {/block}
 
 {block name='header_top'}
-  <div class="header-top hidden-md-up">
-    <div class="container">
-        <div class="row">
-        <div class="col-sm-12">
-          <div class="row">
-            {hook h='displayTop'}
-            <div class="clearfix"></div>
-          </div>
-        </div>
+  <nav class="container">
+
+    <div class="flex w-full items-center p-5 lg:relative">
+
+      <div class="flex w-6/12">
+        {if $page.page_name == 'index'}
+          <h1>
+            <a href="{$urls.pages.index}" class="flex items-center text-lg hover:text-red-550">
+              <img class="w-16" src="{$shop.logo}" alt="{$shop.name}" loading="lazy">
+              <span class="ml-2 hidden sm:inline-block font-bold">{$shop.name|strstr:' ':true}</span>
+              <span class="hidden sm:inline-block ml-1">{$shop.name|strstr:' ':false}</span>
+            </a>
+          </h1>
+        {else}
+          <a href="{$urls.pages.index}" class="flex items-center text-lg hover:text-red-550">
+            <img class="w-16" src="{$shop.logo}" alt="{$shop.name}" loading="lazy">
+            <span class="ml-2 hidden sm:inline-block">{$shop.name|strstr:' ':true}</span>
+            <span class="hidden sm:inline-block ml-1">{$shop.name|strstr:' ':false}</span>
+          </a>
+        {/if}
       </div>
-      <div id="mobile_top_menu_wrapper" class="row hidden-md-up" style="display:none;">
-        <div class="js-top-menu mobile" id="_mobile_top_menu"></div>
-        <div class="js-top-menu-bottom">
-          <div id="_mobile_currency_selector"></div>
-          <div id="_mobile_language_selector"></div>
-          <div id="_mobile_contact_link"></div>
-        </div>
+
+      <div class="flex w-6/12 justify-end items-center">
+        {hook h='displayNav2'}
       </div>
+
     </div>
-  </div>
+
+  </nav>
   {hook h='displayNavFullWidth'}
 {/block}
