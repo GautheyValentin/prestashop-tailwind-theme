@@ -2,14 +2,16 @@
 {extends file='checkout/cart.tpl'}
 
 {block name='continue_shopping' append}
-  <a href="{$urls.pages.index}" class="mt-5 block">
+<div class="mt-5">
+  <a href="{$urls.pages.index}">
     <i class="fas fa-angle-left mr-2"></i> {l s='Continue shopping' d='Shop.Theme.Actions'}
   </a>
+</div>
 {/block}
 
 {block name='cart_actions'}
-  <div class="checkout text-sm-center card-block">
-    <button type="button" class="btn btn-primary disabled" disabled>{l s='Checkout' d='Shop.Theme.Actions'}</button>
+  <div class="flex justify-center mt-5">
+    <button type="button" class="primary-red disabled" disabled>{l s='Checkout' d='Shop.Theme.Actions'}</button>
   </div>
 {/block}
 

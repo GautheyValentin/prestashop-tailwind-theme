@@ -84,7 +84,7 @@
                 </div>
                 {if $product.quantity > $product.qty_returned}
                   <div class="w-10/12" id="_desktop_return_qty_{$product.id_order_detail}">
-                    <select name="order_qte_input[{$product.id_order_detail}]" class="white-input w-full">
+                    <select name="order_qte_input[{$product.id_order_detail}]" class="w-full">
                       {section name=quantity start=1 loop=$product.quantity+1-$product.qty_returned}
                         <option value="{$smarty.section.quantity.index}">{$smarty.section.quantity.index}</option>
                       {/section}

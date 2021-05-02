@@ -9,7 +9,7 @@
       >
     </a>
 
-    <h1 class="h2">
+    <h1 class="font-medium text-lg">
       <a href="{$category.url}">{$category.name}</a>
     </h1>
 

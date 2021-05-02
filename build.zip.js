@@ -1,4 +1,3 @@
-/* eslint-disable */ 
 const shell = require('shelljs');
 const archiver = require('archiver');
 const path = require('path');

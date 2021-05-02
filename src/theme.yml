@@ -51,8 +51,6 @@ global_settings:
       displayLeftColumn:
         - ps_categorytree
         - ps_facetedsearch
-      displaySearch:
-        - ps_searchbar
       displayProductAdditionalInfo:
         - ps_sharebuttons
       displayOrderConfirmation2:

@@ -1,12 +1,12 @@
 
 {block name='cart_detailed_totals'}
-<div class="">
+<div class="" id="cart-detailed-totals">
 
-  <div class="">
+  <div>
     {foreach from=$cart.subtotals item="subtotal"}
       {if $subtotal && $subtotal.value|count_characters > 0 && $subtotal.type !== 'tax'}
         <div class="flex justify-between" id="cart-subtotal-{$subtotal.type}">
-          <span class="uppercase font-medium{if 'products' === $subtotal.type} {/if}">
+          <span class="uppercase font-medium{if 'products' === $subtotal.type}{/if}">
             {if 'products' == $subtotal.type}
               {$cart.summary_string}
             {else}

@@ -5,7 +5,7 @@
   <section id="main">
 
     {block name='product_list_header'}
-      <h1 class="h2">{$listing.label}</h1>
+      <h1 class="font-medium text-lg text-center">{$listing.label}</h1>
     {/block}
 
     {block name='subcategory_list'}

@@ -4,7 +4,7 @@
     <form action="{$urls.current_url}#blockEmailSubscription_{$hookName}" method="post">
       <div class="flex flex-col">
         <input name="email" type="email" value="{$value}"
-          class="focus:ring-indigo-500 focus:border-indigo-500 block  w-full md:w-1/2 p-2 sm:text-sm border-gray-300 rounded"
+          class="w-full md:w-1/2 rounded"
           placeholder="{l s='Your email address' d='Shop.Forms.Labels'}" aria-labelledby="block-newsletter-label"
           required>
         <input type="hidden" name="blockHookName" value="{$hookName}" />

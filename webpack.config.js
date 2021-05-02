@@ -1,4 +1,3 @@
-/* eslint-disable */ 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -12,10 +11,13 @@ require('dotenv').config();
 
 module.exports = (args) => {
   const env = {...args, ...process.env};
+  process.env.NODE_ENV =  env.mode;
 
   const buildDirPath = path.join(__dirname, '.build/');
 
+
   const jsDir = 'assets/js';
+  const coreDir = '../';
   const styleDir = 'assets/css';
 
   const isProduction = env.mode === 'production';
@@ -32,6 +34,10 @@ module.exports = (args) => {
       path: isToZip ? path.join(buildDirPath, jsDir) : path.join(__dirname, '../', jsDir),
       filename: 'theme.js',
     },
+    core: {
+      path: isToZip ? path.join(buildDirPath) : path.join(__dirname, '../', coreDir),
+      filename: 'core.js',
+    },
     style: {
       path: isToZip ? path.join(buildDirPath, styleDir) : path.join(__dirname, '../', styleDir),
     },
@@ -39,17 +45,17 @@ module.exports = (args) => {
 
   return [{
     mode: env.mode,
-    entry: './src/js/theme.js',
+    entry: './src/js/theme.ts',
     output: output.js,
     module: {
       rules: [{
-        test: /\.js$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: ['ts-loader'],
       }],
     },
     resolve: {
-      extensions: ['.js'],
+      extensions: ['.ts'],
     },
     externals: {
       prestashop: 'prestashop',
@@ -59,7 +65,35 @@ module.exports = (args) => {
     optimization: {
       minimize: !!isProduction,
     },
-  }, {
+  }, 
+  {
+    mode: env.mode,
+    entry: './src/js/core/theme.js',
+    output: output.core,
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        },
+      ],
+    },
+    resolve: {
+      extensions: ['.js'],
+    },
+    externals: {
+      prestashop: 'prestashop',
+    },
+    optimization: {
+      minimize: !!isProduction,
+    },
+  },
+  {
     mode: env.mode,
     entry: './src/scss/theme.scss',
     output: output.style,

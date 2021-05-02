@@ -48,7 +48,7 @@
 
         {block name='form_field_item_country'}
           <select
-          class="white-input w-full"
+          class="w-full"
           name="{$field.name}"
           {if $field.required}required{/if}
           >
@@ -90,7 +90,7 @@
       {elseif $field.type === 'birthday'}
 
         {block name='form_field_item_birthday'}
-          <div class="white-input w-full">
+          <div class="w-full">
             {html_select_date
             field_order=DMY
             time={$field.value}
@@ -141,7 +141,7 @@
 
         {block name='form_field_item_other'}
           <input
-            class="white-input w-full"
+            class="w-full"
             name="{$field.name}"
             type="{$field.type}"
             value="{$field.value}"

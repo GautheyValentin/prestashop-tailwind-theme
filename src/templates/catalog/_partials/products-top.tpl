@@ -1,4 +1,4 @@
-<div class="flex mt-5">
+<div class="flex mt-5{if $page.page_name == 'search'} px-5{/if}">
   <div class="hidden sm:flex flex-col w-6/12">
     {if $listing.pagination.total_items > 1}
       <p>

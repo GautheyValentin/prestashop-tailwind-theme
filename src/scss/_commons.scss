@@ -17,22 +17,12 @@ $lg: 1024px;
   vertical-align: 0;
 }
 
-.classic-input {
-  @apply rounded border-gray-400 border bg-gray-200 px-1 py-1 h-8 ring-gray-800 focus:ring-1 focus:outline-none;
-}
-
-.white-input {
-  @apply block p-2 sm:text-sm border-gray-300 rounded;
-}
-
-.password-input {
-  @apply block p-2 pr-24 sm:text-sm border-gray-300 rounded;
-}
-
-
-
 .primary-red {
   @apply rounded bg-red-550 p-1 px-3 text-white;
+
+  &.disabled, &:disabled {
+    @apply opacity-50;
+  }
 }
 
 .card {
@@ -61,4 +51,43 @@ $lg: 1024px;
       @apply ml-5;
     }
   }
+
+  h2 {
+    @apply font-medium text-xl;
+  }
+
+  h3 {
+    @apply mt-2 font-medium text-lg;
+  }
+
+  img {
+    @apply rounded;
+  }
+}
+
+.blog-nav {
+  @apply bg-gray-100 w-full rounded p-2; 
+  ul {
+    @apply flex space-x-4 font-medium text-xl;
+  }
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='number'],
+input[type='url'],
+input[type='date'],
+input[type='datetime-local'],
+input[type='month'],
+input[type='week'],
+input[type='time'],
+input[type='search'],
+input[type='tel'],
+input[type='checkbox'],
+input[type='radio'],
+select,
+select[multiple],
+textarea {
+  @apply rounded focus:ring-gray-600 focus:border-gray-600; 
 }

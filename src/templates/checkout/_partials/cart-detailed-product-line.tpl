@@ -84,13 +84,13 @@
     {/if}
   </div>
 
-  <div class="w-full mt-5 md:mt-0 md:w-2/12 flex justify-around">
+  <div class="w-full mt-5 md:mt-0 md:w-2/12 flex justify-around items-center">
     <div>
       {if !empty($product.is_gift)}
         <span class="gift-quantity">{$product.quantity}</span>
       {else}
         <input
-          class="w-10"
+          class="max-w-90"
           data-down-url="{$product.down_quantity_url}"
           data-up-url="{$product.up_quantity_url}"
           data-update-url="{$product.update_quantity_url}"

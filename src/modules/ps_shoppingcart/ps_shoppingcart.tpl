@@ -1,5 +1,6 @@
 <div 
-  class="flex ml-2 border-solid border-l-2 border-grey-300 pl-2 {if $cart.products_count > 0}active{else}inactive{/if}" 
+  class="flex ml-2 border-solid border-l-2 border-grey-300 pl-2 blockcart {if $cart.products_count > 0}active{else}inactive{/if}"
+  
   data-refresh-url="{$refresh_url}"
 >
   {if $cart.products_count > 0}

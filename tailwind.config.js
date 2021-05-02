@@ -1,6 +1,6 @@
 /* eslint-disable */ 
 module.exports = {
-  purge: [],
+  purge: ['./src/**/*.{tpl,css}'],
   darkMode: false,
   theme: {
     extend: {
@@ -11,6 +11,7 @@ module.exports = {
       maxWidth: {
         90: '90px', 
         452: '452px',
+        700: '700px'
       },
       width: {
         452: '452px',
@@ -60,5 +61,7 @@ module.exports = {
       display: ['group-hover']
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 };

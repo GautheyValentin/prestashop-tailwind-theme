@@ -1,4 +1,3 @@
-
 {block name='order_messages_table'}
   {if $order.messages}
     <div class="card mt-5">
@@ -6,7 +5,7 @@
       {foreach from=$order.messages item=message}
         <div class="message row">
           <div class="col-sm-4">
-            {$message.name}<br/>
+            {$message.name}<br />
             {$message.message_date}
           </div>
           <div class="col-sm-8">
@@ -24,14 +23,16 @@
 
       <header>
         <h3 class="font-medium text-lg">{l s='Add a message' d='Shop.Theme.Customeraccount'}</h3>
-        <p class="mt-2">{l s='If you would like to add a comment about your order, please write it in the field below.' d='Shop.Theme.Customeraccount'}</p>
+        <p class="mt-2">
+          {l s='If you would like to add a comment about your order, please write it in the field below.' d='Shop.Theme.Customeraccount'}
+        </p>
       </header>
 
       <section class="mt-5 space-y-5">
         <div class="flex flex-wrap">
           <label class="w-full md:w-3/12 md:text-right md:pr-5">{l s='Product' d='Shop.Forms.Labels'}</label>
           <div class="w-full md:w-5/12">
-            <select name="id_product" class="white-input w-full">
+            <select name="id_product" class="w-full">
               <option value="0">{l s='-- please choose --' d='Shop.Forms.Labels'}</option>
               {foreach from=$order.products item=product}
                 <option value="{$product.id_product}">{$product.name}</option>

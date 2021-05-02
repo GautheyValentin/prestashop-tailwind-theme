@@ -35,7 +35,7 @@
           {include file='_partials/breadcrumb.tpl'}
         {/block}
 
-        <div class="flex w-full">
+        <div class="flex w-full flex-wrap">
           {block name="left_column"}
             <div id="left-column" class="hidden lg:flex flex-col w-full sm:w-4/12 md:w-3/12 p-5">
               {if $page.page_name == 'product'}
@@ -65,8 +65,8 @@
               {/if}
             </div>
           {/block}
-          <div>
-          </div>
+        </div>
+      </div>
           {hook h="displayWrapperBottom"}
     </section>
 

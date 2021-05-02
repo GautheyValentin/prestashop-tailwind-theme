@@ -1,8 +1,8 @@
 
 {block name='sitemap_item'}
-  <ul{if !empty($is_nested)} class="nested"{/if}>
+  <ul class="card w-full">
     {foreach $links as $link}
-      <li>
+      <li class="mt-0.5">
         <a id="{$link.id}" href="{$link.url}" title="{$link.label}">
           {$link.label}
         </a>

@@ -1,6 +1,6 @@
 <div class="images-container">
   {block name='product_cover'}
-    <div class="relative max-w-452 w-full thumb-container">
+    <div class="relative max-w-452 w-full thumb-container" @click="showImage = true">
       {if $product.default_image}
         <img
           class="rounded-lg border border-gray-300"

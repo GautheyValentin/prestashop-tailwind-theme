@@ -2,7 +2,7 @@
 
 {block name='content'}
 
-  <section id="main" class="min-h-51 px-5">
+  <section id="main" class="min-h-51 md:px-5">
 
     {block name='page_header_container'}
       {block name='page_title' hide}

@@ -1,4 +1,4 @@
-<div>
+<div id="product-variants">
   {foreach from=$groups key=id_attribute_group item=group}
     {if !empty($group.attributes)}
     <div>

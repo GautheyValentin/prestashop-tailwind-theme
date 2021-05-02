@@ -13,9 +13,11 @@
         {/block}
 
         {block name='continue_shopping'}
-          <a href="{$urls.pages.index}" class="mt-5 block">
-            <i class="fas fa-angle-left mr-2"></i> {l s='Continue shopping' d='Shop.Theme.Actions'}
-          </a>
+          <div class="mt-5">
+            <a href="{$urls.pages.index}">
+              <i class="fas fa-angle-left mr-2"></i> {l s='Continue shopping' d='Shop.Theme.Actions'}
+            </a>
+          </div>
         {/block}
 
         {block name='hook_shopping_cart_footer'}
