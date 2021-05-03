@@ -33,14 +33,13 @@ prestashop.selectors = {
       '.quickview .images-container, .page-product:not(.modal-open) .row .images-container, .page-product:not(.modal-open) .product-container .images-container, .quickview .js-images-container, .page-product:not(.modal-open) .row .js-images-container, .page-product:not(.modal-open) .product-container .js-images-container',
     container: '.product-container, .js-product-container',
     availability: '#product-availability, .js-product-availability',
-    actions: '.product-actions, .js-product-actions',
-    variants: '.product-variants, .js-product-variants',
+    actions: '#product-action',
+    variants: '#product-variants',
     refresh: '.product-refresh, .js-product-refresh',
     miniature: '.js-product-miniature',
     minimalQuantity: '.product-minimal-quantity, .js-product-minimal-quantity',
     /* eslint-disable */
-    addToCart:
-      '.quickview .product-add-to-cart, .page-product:not(.modal-open) .row .product-add-to-cart, .page-product:not(.modal-open) .product-container .product-add-to-cart, .quickview .js-product-add-to-cart, .page-product:not(.modal-open) .row .js-product-add-to-cart, .page-product:not(.modal-open) .product-container .js-product-add-to-cart',
+    addToCart: '.product-add-to-cart',
     prices:
       '.quickview .product-prices, .page-product:not(.modal-open) .row .product-prices, .page-product:not(.modal-open) .product-container .product-prices, .quickview .js-product-prices, .page-product:not(.modal-open) .row .js-product-prices, .page-product:not(.modal-open) .product-container .js-product-prices',
     inputCustomization:
@@ -92,17 +91,17 @@ prestashop.selectors = {
     addressForm: '.js-address-form',
   },
   cart: {
-    detailedTotals: '.cart-detailed-totals, .js-cart-detailed-totals',
+    detailedTotals: '#cart-detailed-totals',
     summaryItemsSubtotal: '.cart-summary-items-subtotal, .js-cart-summary-items-subtotal',
     summarySubTotalsContainer: '.cart-summary-subtotals-container, .js-cart-summary-subtotals-container',
     summaryTotals: '.cart-summary-products, .js-cart-summary-products',
     summaryProducts: '.cart-summary-products, .js-cart-summary-products',
-    detailedActions: '.cart-detailed-actions, .js-cart-detailed-actions',
+    detailedActions: '#cart-detailed-actions',
     voucher: '.cart-voucher, .js-cart-voucher',
-    overview: '.cart-overview',
+    overview: '#card-overview',
     summaryTop: '.cart-summary-top, .js-cart-summary-top',
     productCustomizationId: '#product_customization_id, .js-product-customization-id',
-    lineProductQuantity: '.js-cart-line-product-quantity',
+    lineProductQuantity: '#product-quantity-spin',
   },
 };
 

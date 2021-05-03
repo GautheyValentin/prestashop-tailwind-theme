@@ -3,7 +3,7 @@
 
 {block name='form_buttons'}
   <button
-    class="continue btn btn-primary float-xs-right"
+    class="primary-red"
     name="continue"
     data-link-action="sign-in"
     type="submit"

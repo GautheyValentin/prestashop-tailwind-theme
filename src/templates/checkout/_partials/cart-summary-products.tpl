@@ -1,20 +1,24 @@
 
 
- <div class="cart-summary-products">
-  <p>{$cart.summary_string}</p>
+ <div class="cart-summary-products" x-data="{literal}{isOpen: false}{/literal}">
 
-  <p>
-    <a href="#" data-toggle="collapse" data-target="#cart-summary-product-list">
+  <div class="w-full">
+    {$cart.summary_string}
+
+    <a class="float-right" href="#" @click="isOpen = !isOpen">
       {l s='show details' d='Shop.Theme.Actions'}
-      <i class="material-icons">expand_more</i>
+      <i x-show="!isOpen" class="fas fa-caret-down"></i>
+      <i x-show="isOpen" class="fas fa-caret-up" x-cloack></i>
     </a>
-  </p>
+  </div>
 
   {block name='cart_summary_product_list'}
-    <div class="collapse" id="cart-summary-product-list">
-      <ul class="media-list">
+    <div class="mt-2" x-show="isOpen" id="cart-summary-product-list" x-cloack>
+      <ul class="w-full space-y-3">
         {foreach from=$cart.products item=product}
-          <li class="media">{include file='checkout/_partials/cart-summary-product-line.tpl' product=$product}</li>
+          <li class="w-full flex">
+            {include file='checkout/_partials/cart-summary-product-line.tpl' product=$product}
+          </li>
         {/foreach}
       </ul>
     </div>

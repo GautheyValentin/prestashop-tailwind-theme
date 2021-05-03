@@ -23,6 +23,7 @@ If you lanch dev or build, your core.js will be delete
 - Recode Core to typescript and refractor
 - Implement Axios
 - Implement Vue and remove Alpine Js and JQuery
+- Colissimo without jquery and add relay point
 
 ## Dev
 Create directory ```prestashop-tailwind-theme``` in ```themes```

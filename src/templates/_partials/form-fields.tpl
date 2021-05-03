@@ -112,26 +112,26 @@
       {elseif $field.type === 'password'}
 
         {block name='form_field_item_password'}
-          <div class="relative w-full">
+          <div class="relative w-full" x-data="{literal}{isShow: false}{/literal}">
             <input
-              class="password-input w-full"
+              class="w-full"
               name="{$field.name}"
               title="{l s='At least 5 characters long' d='Shop.Forms.Help'}"
               type="password"
+              :type="{literal}!isShow ? 'password' : 'text'{/literal}"
               {if $field.autocomplete}autocomplete="{$field.autocomplete}"{/if}
               value=""
               pattern=".{literal}{{/literal}5,{literal}}{/literal}"
               {if $field.required}required{/if}
             >
-            <span class="absolute right-0.5 top-0.5">
+            <span class="absolute right-1 top-1">
               <button
+                @click="isShow = !isShow"
                 class="primary-red"
                 type="button"
-                data-action="show-password"
-                data-text-show="{l s='Show' d='Shop.Theme.Actions'}"
-                data-text-hide="{l s='Hide' d='Shop.Theme.Actions'}"
               >
-                {l s='Show' d='Shop.Theme.Actions'}
+                <span x-show="!isShow">{l s='Show' d='Shop.Theme.Actions'}</span>
+                <span x-show="isShow" x-cloak>{l s='Hide' d='Shop.Theme.Actions'}</span>
               </button>
             </span>
           </div>

@@ -3,11 +3,14 @@
 
 {block "form_field"}
   {if $field.name === 'password' and $guest_allowed}
-      <p class="form-informations">
-        <span class="font-weight-bold form-informations-title">{l s='Create an account' d='Shop.Theme.Checkout'}</span> <span class="font-italic form-informations-option">{l s='(optional)' d='Shop.Theme.Checkout'}</span>
-        <br>
-        <span class="text-muted form-informations-subtitle">{l s='And save time on your next order!' d='Shop.Theme.Checkout'}</span>
-      </p>
+      <div class="flex w-full flex-wrap md:items-center">
+        <div class="w-full md:w-3/12 md:text-right"></div>
+        <p class="w-full md:w-8/12 md:px-5">
+          <span class="font-weight-bold form-informations-title">{l s='Create an account' d='Shop.Theme.Checkout'}</span> <span class="font-italic form-informations-option">{l s='(optional)' d='Shop.Theme.Checkout'}</span>
+          <br>
+          <span class="text-muted form-informations-subtitle">{l s='And save time on your next order!' d='Shop.Theme.Checkout'}</span>
+        </p>
+      </div>
       {$smarty.block.parent}
   {else}
     {$smarty.block.parent}
@@ -16,7 +19,7 @@
 
 {block "form_buttons"}
     <button
-      class="continue btn btn-primary float-xs-right"
+      class="primary-red"
       name="continue"
       data-link-action="register-new-customer"
       type="submit"

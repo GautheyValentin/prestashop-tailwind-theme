@@ -2,7 +2,7 @@
 
 {if isset($notifications)}
 <aside id="notifications">
-  <div class="container mx-auto mb-5">
+  <div class="container mx-auto mb-5 px-5">
     {if $notifications.error}
       {block name='notifications_error'}
         <article class="bg-red-550 bg-opacity-20 rounded p-2 border border-red-550" role="alert" data-alert="danger">

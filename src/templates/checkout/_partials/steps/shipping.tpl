@@ -13,7 +13,6 @@
         data-url-update="{url entity='order' params=['ajax' => 1, 'action' => 'selectDeliveryOption']}"
         method="post"
       >
-        <div class="">
           {block name='delivery_options'}
             <div class="space-y-2">
               {foreach from=$delivery_options item=carrier key=carrier_id}
@@ -39,7 +38,7 @@
                       <span class="">{$carrier.price}</span>                        
                     </label>
                   </div>
-                  <div class="flex w-full"{if $delivery_option != $carrier_id} style="display:none"{/if}>
+                  <div class="flex w-full carrier-extra-content"{if $delivery_option != $carrier_id} style="display:none"{/if}>
                     {$carrier.extraContent nofilter}
                   </div>
               {/foreach}
@@ -73,7 +72,6 @@
             {/if}
 
           </div>
-        </div>
         <div class="flex justify-end mt-5">
           <button type="submit" class="primary-red" name="confirmDeliveryOption" value="1">
             {l s='Continue' d='Shop.Theme.Actions'}

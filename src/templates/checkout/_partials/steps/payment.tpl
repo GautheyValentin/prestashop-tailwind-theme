@@ -20,21 +20,18 @@
     {foreach from=$payment_options item="module_options"}
       {foreach from=$module_options item="option"}
         <div>
-          <div id="{$option.id}-container" class="payment-option clearfix">
-            {* This is the way an option should be selected when Javascript is enabled *}
-            <span class="custom-radio float-xs-left">
-              <input
-                class="ps-shown-by-js {if $option.binary} binary {/if}"
-                id="{$option.id}"
-                data-module-name="{$option.module_name}"
-                name="payment-option"
-                type="radio"
-                required
-                {if ($selected_payment_option == $option.id || $is_free) || ($payment_options|@count === 1 && $module_options|@count === 1)} checked {/if}
-              >
-              <span></span>
-            </span>
-            {* This is the way an option should be selected when Javascript is disabled *}
+          <div id="{$option.id}-container" class="flex items-center space-x-2">
+
+            <input
+              class="ps-shown-by-js {if $option.binary} binary {/if}"
+              id="{$option.id}"
+              data-module-name="{$option.module_name}"
+              name="payment-option"
+              type="radio"
+              required
+              {if ($selected_payment_option == $option.id || $is_free) || ($payment_options|@count === 1 && $module_options|@count === 1)} checked {/if}
+            >
+        
             <form method="GET" class="ps-hidden-by-js">
               {if $option.id === $selected_payment_option}
                 {l s='Selected' d='Shop.Theme.Checkout'}
@@ -45,8 +42,8 @@
               {/if}
             </form>
 
-            <label for="{$option.id}">
-              <span>{$option.call_to_action_text}</span>
+            <label for="{$option.id}" class="flex items-center space-x-2">
+              <div>{$option.call_to_action_text}</div>
               {if $option.logo}
                 <img src="{$option.logo}" loading="lazy">
               {/if}
@@ -71,7 +68,7 @@
           {if $option.form}
             {$option.form nofilter}
           {else}
-            <form id="payment-form" method="POST" action="{$option.action nofilter}">
+            <form id="payment-form-{$option.id}" method="POST" action="{$option.action nofilter}">
               {foreach from=$option.inputs item=input}
                 <input type="{$input.type}" name="{$input.name}" value="{$input.value}">
               {/foreach}
@@ -120,7 +117,7 @@
   {/if}
 
   <div id="payment-confirmation">
-    <div class="flex flex-col">
+    <div class="flex flex-col mt-5 md:mt-0">
       <div class="flex justify-end">
         <button type="submit" class="primary-red{if !$selected_payment_option} disabled{/if}">
           {l s='Place order' d='Shop.Theme.Checkout'}

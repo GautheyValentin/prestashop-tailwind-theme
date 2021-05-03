@@ -91,3 +91,43 @@ select[multiple],
 textarea {
   @apply rounded focus:ring-gray-600 focus:border-gray-600; 
 }
+
+// CHECKOUT
+
+.checkout-step {
+  .content {
+    @apply hidden;
+  }
+
+  .step-edit {
+    @apply hidden;
+  }
+
+  &.js-current-step {
+    .content {
+      @apply block;
+    }
+  }
+
+  &.-reachable, .-complete {
+    .step-edit {
+      @apply block;
+    }
+  }
+
+  &.-current, .-reachable, .-complete {
+    .step-edit {
+      @apply hidden;
+    }
+  }
+}
+
+.js-terms {
+  a {
+    @apply text-red-550;
+  }
+}
+
+.btn-primary {
+  @apply primary-red;
+}
