@@ -3,6 +3,7 @@
 Status Project : ```In development```
 
 ## [Demo](https://gautheyminiatures.fr)
+## [Release](https://github.com/GautheyValentin/prestashop-tailwind-theme/releases)
 
 ## ⚠️ IMPORTANT ⚠️
 Core is in project and it will be recode
