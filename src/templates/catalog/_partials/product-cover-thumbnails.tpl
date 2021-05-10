@@ -28,7 +28,7 @@
     <div class="flex items-center space-x-1 mt-5">
       <i class="fas fa-angle-left"></i>
 
-      <ul class="w-11/12">
+      <ul class="w-11/12 flex space-x-2">
         {foreach from=$product.images item=image}
           <li class="">
             <img
