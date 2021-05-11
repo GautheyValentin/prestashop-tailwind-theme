@@ -4,6 +4,7 @@
       {if $product.default_image}
         <img
           class="rounded-lg border border-gray-300"
+          :src="src"
           src="{$product.default_image.bySize.medium_default.url}"
           width="{$product.default_image.bySize.medium_default.width}"
           {if !empty($product.default_image.legend)}
@@ -32,10 +33,12 @@
         {foreach from=$product.images item=image}
           <li class="">
             <img
-              class="rounded-lg border-2 {if $image.id_image == $product.default_image.id_image}border-gray-300{/if}"
+              class="cursor-pointer rounded-lg border-2"
+              :class="{literal}{'border-red-550': src === '{/literal}{$image.bySize.medium_default.url}{literal}'}{/literal}"
               data-image-medium-src="{$image.bySize.medium_default.url}"
               data-image-large-src="{$image.bySize.large_default.url}"
               src="{$image.bySize.home_default.url}"
+              @click="src = '{$image.bySize.medium_default.url}'"
               {if !empty($image.legend)}
                 alt="{$image.legend}"
                 title="{$image.legend}"

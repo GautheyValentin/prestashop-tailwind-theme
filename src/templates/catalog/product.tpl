@@ -30,7 +30,7 @@
     <div class="flex w-full justify-center flex-wrap">
       <div class="flex flex-col w-full sm:w-5/12 p-5 sm:items-end">
         {block name='page_content_container'}
-          <section class="" id="content" x-data="{literal}{showImage: false}{/literal}">
+          <section class="" id="content" x-data="{literal}{showImage: false, src: {/literal}'{$product.default_image.bySize.medium_default.url}'{literal}}{/literal}">
             {block name='page_content'}
               {include file='catalog/_partials/product-flags.tpl'}
 
