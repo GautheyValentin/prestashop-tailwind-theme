@@ -9,8 +9,9 @@
               <meta itemprop="position" content="{$smarty.foreach.breadcrumb.iteration}">
             </li>
           {elseif isset($path.title)}
-            <li class="inline text-gray-500">
-              <span>> {$path.title}</span>
+            <li class="inline text-gray-500" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <span itemprop="name">{if not $smarty.foreach.breadcrumb.first}> {/if}{$path.title}</span>
+              <meta itemprop="position" content="{$smarty.foreach.breadcrumb.iteration}">
             </li>
           {/if}
         {/block}

@@ -1,9 +1,6 @@
 {block name='product_miniature_item'}
-  <div itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-    {if isset($position)}
-    <meta itemprop="position" content="{$position}" />{/if}
-    <article data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}"
-      itemprop="item" itemscope itemtype="https://schema.org/Product">
+  <div>
+    <article data-id-product="{$product.id_product}" data-id-product-attribute="{$product.id_product_attribute}">
       <div class="relative w-full bg-white border border-solid border-gray-200 rounded">
         {block name='product_thumbnail'}
           {if $product.cover}
@@ -22,11 +19,9 @@
         <div class="relative w-full p-2 border-t border-solid border-gray-200">
           {block name='product_name'}
             {if $page.page_name == 'index'}
-              <h3 class="text-sm text-gray-500 text-center" itemprop="name"><a href="{$product.url}" itemprop="url"
-                  content="{$product.url}">{$product.name|truncate:30:'...'}</a></h3>
+              <h3 class="text-sm text-gray-500 text-center"><a href="{$product.url}">{$product.name|truncate:30:'...'}</a></h3>
             {else}
-              <h2 class="text-sm text-gray-500 text-center" itemprop="name"><a href="{$product.url}" itemprop="url"
-                  content="{$product.url}">{$product.name|truncate:30:'...'}</a></h2>
+              <h2 class="text-sm text-gray-500 text-center"><a href="{$product.url}">{$product.name|truncate:30:'...'}</a></h2>
             {/if}
           {/block}
 
@@ -55,11 +50,6 @@
                     {$product.price}
                   {/if}
                 </span>
-
-                <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" class="invisible">
-                  <meta itemprop="priceCurrency" content="{$currency.iso_code}" />
-                  <meta itemprop="price" content="{$product.price_amount}" />
-                </div>
 
                 {hook h='displayProductPriceBlock' product=$product type='unit_price'}
 

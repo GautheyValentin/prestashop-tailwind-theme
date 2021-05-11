@@ -11,11 +11,12 @@
 
     {block name='product_price'}
       <div
-        class="text-xl h5 {if $product.has_discount}{/if}"
+        class="text-xl{if $product.has_discount}{/if}"
         itemprop="offers"
         itemscope
         itemtype="https://schema.org/Offer"
       >
+        <link itemprop="url" href="{$product.link}" />
         <link itemprop="availability" href="{$product.seo_availability}"/>
         <meta itemprop="priceCurrency" content="{$currency.iso_code}">
 
