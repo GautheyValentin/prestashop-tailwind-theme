@@ -25,7 +25,7 @@
         {/block}
       </div>
 
-      <div class="w-full md:w-3/12 px-5">
+      <div class="w-full md:w-3/12 md:pl-5">
 
         {block name='cart_summary'}
           <div class="bg-gray-100 p-2 md:p-5 rounded">

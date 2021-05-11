@@ -1,6 +1,6 @@
 
-<section class="mt-16">
-  <h2 class="text-xl text-center font-bold mb-8">
+<section class="mt-10 w-full">
+  <h2 class="text-xl text-center font-bold mb-5">
     {l s='Popular Products' d='Shop.Theme.Catalog'}
   </h2>
   {include file="catalog/_partials/productlist.tpl" products=$products}

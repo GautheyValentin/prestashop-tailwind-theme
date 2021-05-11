@@ -41,6 +41,7 @@ global_settings:
       displayHome:
         - ps_imageslider
         - prestablog
+        - ps_customtext
         - ps_featuredproducts
       displayFooter:
         - ps_contactinfo
