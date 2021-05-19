@@ -13,12 +13,15 @@
       {foreach from=$order.products item=product}
         <tr>
           <td class="border p-2">
-            <a class="font-medium" {if isset($product.download_link)}href="{$product.download_link}"{/if}>
+            <span class="font-medium">
               {$product.name}
-            </a>
+            </span>
+
+            {if isset($product.download_link)}
+              <a  class="ml-5" href="{$product.download_link}"><i class="fas fa-download"></i> {l s='Download' d='Shop.Theme.Actions'}</a>
+            {/if}
             
             <br/>
-
             {if $product.product_reference}
               {l s='Reference' d='Shop.Theme.Catalog'}: {$product.product_reference}<br/>
             {/if}
