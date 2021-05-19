@@ -7,9 +7,9 @@
 {block name='header_top'}
   <nav class="container" x-data="{ open: false }">
 
-    <div class="flex w-full items-center p-5 lg:relative">
+    <div class="flex w-full items-center p-5 lg:relative justify-between">
 
-      <div class="flex w-3/12">
+      <div class="flex">
         <button class="lg:hidden" @click="open = !open">
           <i class="fas fa-bars fa-lg"></i>
         </button>
@@ -30,11 +30,11 @@
         {/if}
       </div>
 
-      <div class="flex w-4/12">
+      <div class="flex">
         {hook h='displayNav1'}
       </div>
 
-      <div class="flex w-5/12 justify-end items-center">
+      <div class="flex justify-end items-center">
         <div class="hidden lg:flex">
           {hook h='displaySearch'}
         </div>
