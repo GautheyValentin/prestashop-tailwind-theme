@@ -1,6 +1,13 @@
 # Prestashop Theme (TailWind - AlpineJS)
 
-Status Project : ```In development```
+Status Project : ```Deprecated```
+Projet Proof of concept
+
+## ⚠️ Personal Experience Developper ⚠️
+I don't recomand to use tailwind in prestashop, it's too difficult to deal with selector because there are too much.
+Stay with basic SCSS is better.
+Typescript is a mistake too due to untyped library.
+
 
 ## [Demo](https://gautheyminiatures.fr)
 ## [Release](https://github.com/GautheyValentin/prestashop-tailwind-theme/releases)

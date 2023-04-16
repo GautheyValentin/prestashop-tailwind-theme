@@ -6,13 +6,13 @@
       {foreach from=$nodes item=node}
         <li {if $depth == 0}class="py-3 px-5 lg:p-5{if $node.current} current {/if}" {/if}
           {if $depth == 1}class="mt-1 lg:mt-0 lg:p-5{if $node.current} current {/if}" {/if} id="{$node.page_identifier}"
-          {if $depth === 0} x-data="{ dropdownOpen: false }" @mouseover="dropdownOpen = true" @touchstart.prevent="dropdownOpen = !dropdownOpen"
+          {if $depth === 0} x-data="{ dropdownOpen: false }" @mouseover="dropdownOpen = true" 
           @mouseover.away="dropdownOpen = false" {/if}>
           {assign var=_counter value=$_counter+1}
-          <a {if $depth === 1}class="uppercase font-bold" {/if} href="{$node.url}" data-depth="{$depth}"
+          <a {if $depth === 1}class="uppercase font-bold"{/if} {if $depth === 0 && $node.children|count}href="#" @touchstart.prevent="dropdownOpen = !dropdownOpen"{else}href="{$node.url}"{/if} data-depth="{$depth}"
             {if $node.open_in_new_window} target="_blank" {/if}>
             {if $depth === 0 && $node.children|count}
-              <span @touchstart.prevent="dropdownOpen = !dropdownOpen" class="lg:hidden">
+              <span class="lg:hidden">
                 <i x-show="dropdownOpen == false" class="fas fa-angle-down"></i>
                 <i x-show="dropdownOpen == true" class="fas fa-angle-up"></i>
               </span>

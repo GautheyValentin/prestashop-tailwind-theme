@@ -125,23 +125,7 @@ module.exports = (args) => {
       rules: [
         {
           test: /\.(css|sass|scss)$/,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-              options: {
-                publicPath: '',
-              },
-            },
-            {
-              loader: 'css-loader',
-            },
-            {
-              loader: 'postcss-loader',
-            },
-            {
-              loader: 'sass-loader',
-            },
-          ],
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/i,
@@ -151,15 +135,11 @@ module.exports = (args) => {
           },
         },
         {
-          test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-          use: [
-            {
-              loader: 'file-loader',
-              options: {
-                name: '[name].[hash].[ext]',
-              },
-            },
-          ],
+          test: /\.(woff(2)?|ttf|eot)$/,
+          type: 'asset/resource',
+          generator: {
+              filename: './fonts/[name][ext]',
+          },
         },
       ],
     },

@@ -1,15 +1,15 @@
-@import "~@fontsource/roboto/100.css";
-@import "~@fontsource/roboto/300.css";
-@import "~@fontsource/roboto/400.css";
-@import "~@fontsource/roboto/500.css";
-@import "~@fontsource/roboto/700.css";
-@import "~@fontsource/roboto/900.css";
+@import "@fontsource/roboto/100.css";
+@import "@fontsource/roboto/300.css";
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/500.css";
+@import "@fontsource/roboto/700.css";
+@import "@fontsource/roboto/900.css";
 
-$fa-font-path: '~@fortawesome/fontawesome-free/webfonts'; 
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/brands';
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts'; 
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/brands';
 
 @import "tailwindcss/base";
 @import "tailwindcss/components";
