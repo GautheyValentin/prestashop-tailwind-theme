@@ -30,13 +30,12 @@
     <div class="flex w-full justify-center flex-wrap">
       <div class="flex flex-col w-full sm:w-5/12 p-5 sm:items-end">
         {block name='page_content_container'}
-          <section class="" id="content" x-data="{literal}{showImage: false, src: {/literal}'{$product.default_image.bySize.medium_default.url}'{literal}}{/literal}">
+          <section class="relative" id="content" x-data="{literal}{showImage: false, src: {/literal}'{$product.default_image.bySize.medium_default.url}'{literal}}{/literal}">
             {block name='page_content'}
-              {include file='catalog/_partials/product-flags.tpl'}
-
               {block name='product_cover_thumbnails'}
                 {include file='catalog/_partials/product-cover-thumbnails.tpl'}
               {/block}
+              {include file='catalog/_partials/product-flags.tpl'}
             {/block}
             {include file='catalog/_partials/product-images-modal.tpl'}
           </section>

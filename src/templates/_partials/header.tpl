@@ -10,7 +10,7 @@
     <div class="flex w-full items-center p-5 lg:relative justify-between">
 
       <div class="flex">
-        <button class="lg:hidden" @click="open = !open">
+        <button class="lg:hidden px-2" @click="open = !open">
           <i class="fas fa-bars fa-lg"></i>
         </button>
         {if $page.page_name == 'index'}

@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --env mode=production --progress --color",
     "build:zip": "node build.zip.js",
-    "start": "webpack  --env mode=development --color -w"
+    "dev": "webpack  --env mode=development --color -w"
   },
   "author": "Gauthey Valentin",
   "license": "MIT",
